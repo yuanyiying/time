@@ -1,34 +1,1462 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Time by yuanyiying</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Time</h1>
-      <h2 class="project-tagline">personal web</h2>
-      <a href="https://github.com/yuanyiying/time" class="btn">View on GitHub</a>
-      <a href="https://github.com/yuanyiying/time/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/yuanyiying/time/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人网站</title>
+<style>
+*{margin:0px;padding:0px;list-style:none;}
+body{background-image:url(image/bg5.png);}
+/*分类*/
+.nav{width:75px;margin-left:20px;float:left;}
+.main_c{width:75px;height:304px;float:left;position:fixed;background-color:#3B5998;}
+.main_c div{width:75px;height:75px;border-bottom:1px solid #ccc;text-align:center;cursor:pointer;position:relative;z-index:2;}
+.main_c1 img{width:45px;height:45px;margin-top:10px;}
+.main_c div#main_c1_none{width:75px;height:75px;background-color:#40A5D5;position:absolute;z-index:1;opacity:0.5;top:0px;left:0px;}
+/*主要内容*/
+.home{width:1111px;height:627px;overflow:hidden;border:1px solid red;float:left;margin-left:150px;position:relative;}
+.page{width:100%;height:620px;border:1px solid blue;overflow:hidden;position:relative;padding:10px;background-color:#266991;}
+#home_main{width:100%;height:100%;position:absolute;}
+/*JS*/
+.js_tit{height:30px;line-height:30px;font-size:20px;width:970px;border-bottom:1px solid #fff;color:#000;}
+.js_con .js_con_btn{height:40px;width:700px;}
+.js_con .js_con_btn p{margin-top:5px;padding:4px 2px;font-size:15px;text-align:center;color:#fff;width:108px;background-color:#8686F7;float:left;margin-right:10px;cursor:pointer;}
+.js_con .js_con_btn .active1{background-color:#2306C6;}
+#js_tab_con .active2{display:block;}
+.js_con .js_tab_con ul{display:none;}
+.js_con .js_con_con .js_tab_li1,.js_tab_li2{width:200px;height:240px;cursor:pointer;float:left;margin:15px 5px 20px 5px;position:relative;overflow:hidden;border:1px solid red;}
+.js_con .js_con_con .js_tab_li1{width:348px;height:240px;overflow:hidden; position:relative;float:left;}
+.js_con .js_con_con li .lg{position:absolute; top:240px; left:0; width:100%; height:100%; background:green;}
+.js_con .js_con_con li{ overflow:hidden; position:relative; width:348px; height:240px; float:left; background:#ccc; margin:10px;}
+.js_con .js_con_con li img{width:348px;height:240px;position:absolute;left:0px;top:0px;}
+.js_con .js_con_con li p{width:200px;height:0px;font-size:20px;color:#fff;text-align:center;background-color:#066;position:absolute;bottom:0px;}
+/*作品*/
+.home4 .web{width:100%;height:100%;background-color:#3B5998 ;float:left;cursor:pointer;line-height:100px;font-size:20px;color:#fff;text-align:center;}
+/*个人介绍*/
+.main_l{height:560px;width:260px;padding:0px 10px;float:right;text-align:center;background-color:#3B5998;margin-right:10px;}
+.main_l1{width:260px;height:250px;padding-top:10px;border-bottom:1px solid #839CCF;}
+.main_l1 p{margin-top:10px;}
+.main_l1 a{display:block;background-image:url(image/logo.png);height:150px;width:150px;margin:0 auto;transition:1s all ease;}
+.main_l1 a:hover{border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;}
+.main_l2{width:260px;heihgt:142px;border-bottom:1px solid #839CCF;padding:20px 0px;}
+.main_l2:hover{}
+.main_l3{padding-top:20px;}
+.main_l3 a{display:block;padding:10px;border:1px solid #fff;width:25px;height:25px;float:left;margin-left:15px;margin-top:20px;}
+.main_l3 img{width:25px;height:25px;}
+/*内容*/
+.main_r{width:700px;padding:0px 10px;float:left;margin-left:20px;margin-top:10px;}
+.tit{height:50px;font-size:20px;border-bottom:1px solid #fff;line-height:50px;}
+/*内容1*/
+.content{width:650px;position:absolute;left:0px;top:0px;background-color:#B6C8FE;}
+.con1 p{width:300px;height:20px;line-height:20px;border-bottom:1px solid #fff;}
+.con1 table{width:300px;}
+.con1 table tr{height:30px;border-bottom:1px solid #fdfdfd;}
+.con1 table tr .table_tit{color:#3B5998;}
+.con1_tit{height:20px;width:200px;padding:5px;border-bottom:1px solid #ccc;}
+/*内容2*/
+.con2 .con2_tit{height:30px;border-bottom:1px solid #fff;padding:10px 0px;font-size:20px;line-height:30px;}
+.con2 .con2_tit p{margin-top:10px;}
+.con2_con{height:300px;padding-top:20px;}
+.con2_con p{height:250px;text-align:center;float:left;cursor:pointer;border:2px solid  #f4f4f4;padding-top:10px;margin-left:15px;}
+.con2_con p:hover{height:250px;background-color:#fff;border:2px solid #ccc;}
+.con2_con p img{width:66px;height:66px;border:5px solid #3B5998;border-radius:50%;-webkit-border-radius:50%;background-color:#fff;padding:20px;margin-bottom:10px;}
+.con2_con p img:hover{border:5px solid #fff;background-color:#3B5998;}
+.con2_con p span{width:170px;padding:0px 10px;display:block;}
+.border{width:500px;height:2px;background-color:#3B5998;margin:0 auto;}
+/*内容3*/
+.con3_tit{height:30px;border-bottom:1px solid #fff;padding:10px 0px;font-size:20px;line-height:30px;}
+.con3_con{width:624px;margin-top:10px;}
+.con3_con li .con3_con_tit{width:624px;height:35px;font-size:15px;background-color:#3B5998;color:#fff;border-bottom:2px solid #ccc;line-height:35px;padding-left:20px;cursor:pointer;}
+.con3_con li ul{width:605px;height:0px;padding-left:20px;background-color:#fff;overflow:hidden;margin-left:10px;}
+.con3_con li ul div{margin-top:10px;}
+.con3_con li ul div p{width:650px;line-height:40px;font-size:20px;}
+/*自定义滚动条*/
+.scroll { position:absolute; right:431px; top:9px;width:20px;height:612px;background-color:#DFDFDF;}
+.scroll a { position:absolute; left:0; width:20px; height:20px; line-height:40px; text-align:center; background:#ccc; text-decoration:none; }
+.item { position:relative; height:564px; width:20px; }
+.item #span1 { position:absolute; top:0; left:0; width:100%; height:20px; background-color:#628BF9; }
+/*联系方式*/
+#contact{position:relative;}
+#contact a div{width:235px;height:30px;line-height:30px;background-color:#fff;position:absolute;left:15px;top:110px;background-color:#f4f4f4;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;-o-border-radius:10px;box-shadow:4px 4px rgba(190,190,190,0.2);-webkit-box-shadow:4px 4px rgba(190,190,190,0.2);-o-box-shadow:4px 4px rgba(190,190,190,0.2);-moz-box-shadow:4px 4px rgba(190,190,190,0.2);color:#4822FB;border:1px solid #5846F7;display:none;}
+/*回到顶部*/
+#back{width:60px;height:40px;background-image:url(image/back.png);position:fixed;right:5px;bottom:10px;z-index:2;text-align:center;color:#fff;cursor:pointer;}
+/*文字*/
+#main_l2_p{transition:1s all ease;cursor:pointer;}
+#main_l2_p:hover{-webkit-border-shadow:10px 10px 5px rgba(255,0,0,.5);
+-moz-text-shadow:10px 10px 5px rgba(255,0,0,.5);
+-ms-text-shadow:10px 10px 5px rgba(255,0,0,.5);
+-o-text-shadow:10px 10px 5px rgba(255,0,0,.5);
+text-shadow:10px 10px 5px rgba(255,0,0,.5);
+}
+</style>
+<script src="js/move.js"></script>
+<script src="js/jsonp.js"></script>
+<script>
+window.onload=function(){
+	//分类导航
+	var oMain_c=document.getElementById('main_c');
+	var oMain_nav=oMain_c.children;
+	var oBox=oMain_nav[oMain_nav.length-1];
+	
+	var iNow=0;
+	for(var i=0; i<oMain_nav.length-1; i++){
+		oMain_nav[i].index=i;
+		oMain_nav[i].onmouseover=function(){
+			//oBox.style.left=this.offsetLeft+'px';	
+			startMove(oBox,this.offsetTop);
+		};
+		oMain_nav[i].onmouseout=function(){
+			startMove(oBox,iNow*oMain_nav[0].offsetHeight);	
+		};
+		
+		oMain_nav[i].onclick=function(){
+			iNow=this.index;	
+		};
+	}
+	(function(global){
+		var top=0;
+		var iSpeed=0;
+		var timer=null;
+		global.startMove=function(obj,iTarget){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				iSpeed+=(iTarget-top)/5;	
+				iSpeed*=0.7;
+				
+				top+=iSpeed;
+				obj.style.top=Math.round(top)+'px';
+				
+				if(Math.round(iSpeed)==0 && Math.round(top)==iTarget){
+					clearInterval(timer);
+				}
+				
+			},30);	
+		}
+	})(window);
+	var oBar_html=document.getElementById('bar_html');
+	var ojs_con_btn2=document.getElementById('js_con_btn2');
+	var oBar_css=document.getElementById('bar_css');
+	var oBar_js=document.getElementById('bar_javascript');
+	var oBar_jq=document.getElementById('bar_jquery');
+	var oBar_css3=document.getElementById('bar_css3');
+	var oBar_html5=document.getElementById('bar_html5');
+	//分类导航
+	var oMain_c=document.getElementById('main_c');
+	var oMain_btn=oMain_c.getElementsByTagName('div');
+	var oHome=document.getElementById('home');
+	var oHome_page=getClass(oHome,'page');
+	var oHome_main=document.getElementById('home_main');
+	for(var i=0;i<oMain_btn.length;i++)
+	{
+		oMain_btn[i].index=i;
+		oMain_btn[i].onclick=function(){
+			var a=this.index;
+			var oHome_page_H=oHome_page[a].offsetHeight;
+			if(a==3)
+			{
+				oHome_page_H=oHome_page[0].offsetHeight
+			}
+			move(oHome_main,{top:-a*oHome_page_H});
+			
+		};
+	}
+	//自定义滚动条
+	var oSBox=document.getElementById('box');
+	var oItem=document.getElementById('item');
+	var oSSpan=document.getElementById('span1');
+	var top=0;
+	var oCont=document.getElementById('content');
+	var nBoxH=parseInt(getStyle(oSBox, 'height'));//框的高度
+	var nContH=oCont.offsetHeight;//内容高度
+	var nMaxContTop=nContH-nBoxH;//最大的高度
+	addWheel(oSBox, function (down){
+		if (down){top-=5;}
+		else{top+=5;}
+		if (top > 0){top=0;}
+		else if (top < -nMaxContTop)
+			{top=-nMaxContTop;}
+		oCont.style.top=top+'px';
+		var nSpanTop=top/nMaxContTop*nMaxTop;
+		oSSpan.style.top= -nSpanTop+'px';
+	});
+	function addWheel(obj, fn)
+	{
+		if (window.navigator.userAgent.toLowerCase().indexOf('firefox') != -1)
+		{
+			obj.addEventListener('DOMMouseScroll', function (ev){
+				var down=ev.detail>0 ? true : false;
+				fn(down);
+				ev.preventDefault();
+			}, false);
+		}
+		else
+		{
+			obj.onmousewheel=function (){
+			var down=event.wheelDelta>0 ? false : true;
+			fn(down);
+			return false;
+			};
+		}
+	}
+	function getStyle(obj, sName)
+	{
+		return (obj.currentStyle || getComputedStyle(obj, false))[sName];
+	}	
+	// 算高度
+	var nSpanH=oItem.offsetHeight/(nContH/nBoxH);
+	// if (nSpanH < 50) nSpanH=50;
+	(nSpanH<20) && (nSpanH=20);
+	oSSpan.style.height=nSpanH+'px';
+	
+	var nMaxTop=oItem.offsetHeight-oSSpan.offsetHeight;
+	// 拖拽
+	oSSpan.onmousedown=function (ev){
+		var oEvent=ev || event;
+		var disY=oEvent.clientY-oSSpan.offsetTop;
+		document.onmousemove=function (ev){
+			var oEvent=ev || event;
+			top=oEvent.clientY-disY;
+			setTop();
+		};
+		document.onmouseup=function (){
+			document.onmousemove=null;
+			document.onmouseup=null;
+			oSSpan.releaseCapture && oSSpan.releaseCapture(); 
+		};
+		oSSpan.setCapture && oSSpan.setCapture();
+		return false;
+	};
+	function setTop()
+	{
+		if (top < 0)
+		{
+			top=0;
+		}
+		else if (top > nMaxTop)
+		{
+			top=nMaxTop;
+		}
+		oSSpan.style.top=top+'px';
+		// 算比例
+		var nContTop=top/nMaxTop*nMaxContTop;
+		oCont.style.top=-nContTop+'px';
+	}
+	function getStyle(obj, sName)
+	{
+		return (obj.currentStyle || getComputedStyle(obj, false))[sName];
+	}
+	//tab
+	var oFold=document.getElementById('fold');
+	var oBtn=oFold.getElementsByTagName('li');
+	var oCon=oFold.getElementsByTagName('ul');
+	for(var i=0;i<oBtn.length;i++)
+	{
+		oBtn[i].onclick=function(){
+			for(var i=0;i<oBtn.length;i++)
+			{
+				move(oCon[i],{height:0});
+			}
+			move(this.children[1],{height:80});
+		};
+	}			
+	//js效果1
+	/*var oJscon1=document.getElementById('js_con_con1');
+	var oLi=oJscon1.getElementsByClassName('js_tab_li1');
+	var oImg=oJscon1.getElementsByTagName('img');
+	var oFont=oJscon1.getElementsByTagName('p');
+	for(var i=0;i<oLi.length;i++)
+	{
+		oLi[i].index=i;
+		oLi[i].onmouseover=function(){
+			move(this.children[0],{width:250,height:350,left:-20,top:-25});
+			move(this.children[1],{height:40});
+		};
+		oLi[i].onmouseout=function(){
+			
+			move(this.children[0],{width:200,height:300,left:0,top:0});
+			move(this.children[1],{height:0});
+		};
+	}*/
+	//js效果2
+	var oJscon2=document.getElementById('js_con_con2');
+	var oLi=oJscon2.getElementsByClassName('js_tab_li2');
+	var oImg=oJscon2.getElementsByTagName('img');
+	var oFont=oJscon2.getElementsByTagName('p');
+	for(var i=0;i<oLi.length;i++)
+	{
+		oLi[i].index=i;
+		oLi[i].onmouseover=function(){
+			
+			move(this.children[0],{top:-25});
+			move(this.children[1],{height:40});
+		};
+		oLi[i].onmouseout=function(){
+			
+			move(this.children[0],{top:0});
+			move(this.children[1],{height:0});
+		};
+	}
+	//js_tab
+	var js_tab_Btn=document.getElementById('js_tab_btn');
+	var js_Btn=js_tab_Btn.getElementsByTagName('p');
+	var js_tab_Con=document.getElementById('js_tab_con');
+	var js_Con=js_tab_Con.getElementsByClassName('js_con_con');
+	for(var i=0;i<js_Btn.length;i++)
+	{
+		js_Btn[i].index=i;
+		js_Btn[i].onclick=function(){
+			for(var i=0;i<js_Btn.length;i++)
+			{
+				js_Btn[i].className='';
+				js_Con[i].style.display='none';
+			}
+			this.className='active1';
+			js_Con[this.index].style.display='block';
+			
+		};
+	}
+	//js分块运动
+	var oBlock=document.getElementById('block');
+	var block_oBox=document.getElementById('block_box');
+	var block_oBtn=document.getElementById('block_btn');
+	var oImg=document.getElementById('img1');
+	var block_close=document.getElementById('block_close');
+	var bFlag=false;
+	var now=0;
+	var aSpan=[];
+	var row=4;
+	var col=7;
+	block_close.onclick=function(){
+		oBlock.style.display='none';
+	};
+			
+	var W=700/col;
+	var H=400/row;
 
-    <section class="main-content">
-      <p>hello world</p>
+	for(var r=0; r<row; r++)
+	{
+		for (var c=0; c<col; c++)
+		{
+			var oSpan=document.createElement('span');
+			var left=c*W;
+			var top=r*H;
+			oSpan.style.left=left+'px';
+			oSpan.style.top=top+'px';
+			oSpan.style.width=W+'px';
+			oSpan.style.height=H+'px';
+			
+			oSpan.style.backgroundPosition=-left+'px -'+top+'px';
+			
+			block_oBox.appendChild(oSpan);
+			aSpan.push(oSpan);
+		}
+	}
+	
+	// 点击
+	block_oBtn.onclick=function (){
+		if (bFlag)
+		{
+			return false;
+		}
+		
+		
+		now++;
+		bFlag=true;
+		
+		// span
+		for (var i=0; i<aSpan.length; i++)
+		{
+			aSpan[i].style.opacity=0;
+			aSpan[i].style.backgroundImage='url(image/fk/'+now%3+'.jpg)';
+			// background:url(image/fk/11.jpg)
+		}
+		
+		var n=0;
+		var timer=setInterval(function (){
+			(function (index){
+				move(aSpan[n], {opacity:1}, {
+					complete:function (){
+						if (index == aSpan.length-1)
+						{
+							// 最后一个运动完了
+							oImg.src='image/fk/'+now%3+'.jpg';
+							bFlag=false;
+						}
+					}	
+				});
+			})(n);
+			
+			n++;
+			if (n == aSpan.length)
+			{
+				clearInterval(timer);
+			}
+		}, 200);
+	};
+	//百度下拉
+	var BD_oT=document.getElementById('t1');
+	var oUl=document.getElementById('ul1');	
+	var BD_oBtn=document.getElementById('BD_btn1');
+	var BD_close=document.getElementById('BD_close');
+	var BD=document.getElementById('BD');
+	BD_close.onclick=function(){
+		BD.style.display='none';
+	};
+	
+	var iNow=-1;
+	var oldValue='';
+	
+	//
+	BD_oT.onkeyup=function(ev){
+		var oEvent=ev || event;
+		if(oEvent.keyCode==40 || oEvent.keyCode==38)return;
+		
+		//回车搜索
+		if(oEvent.keyCode==13){
+			window.open('https://www.baidu.com/s?wd='+BD_oT.value,'_self');
+			BD_oT.value='';
+		}
+		
+		jsonp({
+			url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+			data:{wd:BD_oT.value},
+			success:function(json){
+				var arr=json.s;
+				oUl.innerHTML='';
+				if(arr.length){
+					oUl.style.display='block';
+				}else{
+					oUl.style.display='none';
+				}
+				
+				for(var i=0; i<arr.length; i++){
+					var oLi=document.createElement('li');
+					oLi.innerHTML=arr[i];
+					oUl.appendChild(oLi);
+					
+					(function(index){
+						oLi.onmouseover=function(){
+							for(var i=0; i<oUl.children.length; i++){
+								oUl.children[i].className='';
+							
+							}	
+							this.className='on';
+							
+							iNow=index;
+						};
+						
+						oLi.onclick=function(){
+							window.open('https://www.baidu.com/s?wd='+this.innerHTML,'_self');
+							BD_oT.value='';	
+						};
+					})(i);
+				}
+				
+				iNow=-1;
+			}	
+		});
+		
+		oldValue=BD_oT.value;	
+	};
+	
+	//键盘控制
+	BD_oT.onkeydown=function(ev){
+		var aLi=oUl.children;
+		
+		var oEvent=ev || event;
+		if(oEvent.keyCode==40){
+			iNow++;
+			if(iNow==aLi.length)iNow=-1;
+			tab();
+		}	
+		
+		if(oEvent.keyCode==38){
+			iNow--;
+			if(iNow==-2)iNow=aLi.length-1;
+			tab();
+			return false;
+		}
+		
+		function tab(){
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].className='';
+			}
+			if(iNow==-1){
+				BD_oT.value=oldValue;
+			}else{
+				aLi[iNow].className='on';
+				BD_oT.value=aLi[iNow].innerHTML;	
+			}	
+		}
+	};
+	
+	//点击搜索
+	BD_oBtn.onclick=function(){
+		window.open('https://www.baidu.com/s?wd='+BD_oT.value,'_self');
+		BD_oT.value='';	
+	};
+	//拉钩
+	(function(){
+		var oUl1=document.getElementById('js_con_con1');
+	var aDiv=oUl1.getElementsByClassName('js_tab_li1');
+	for (var i=0; i<aDiv.length; i++)
+	{
+		enter(aDiv[i]);
+		leave(aDiv[i]);
+	}
+	function enter(obj){
+		var olgSpan=obj.getElementsByClassName('lg')[0];
+		obj.onmouseenter=function (ev){
+			var oEvent=ev || event;
+			var n=getN(obj, oEvent);
+			console.log(n);
+			switch (n)
+			{
+				case 0:
+					olgSpan.style.left='348px';
+					olgSpan.style.top=0;
+					break;
+					
+				case 1:
+					olgSpan.style.left=0;
+					olgSpan.style.top='240px';
+					break;
+				
+				case 2:
+					olgSpan.style.left='-348px';
+					olgSpan.style.top='0';
+					break;
+					
+				case 3:
+					olgSpan.style.left='0';
+					olgSpan.style.top='-240px';
+					break;
+			}
+			
+			move(olgSpan, {top:0, left:0});
+		};
+	};
+	
+	function leave(obj){
+		var olgSpan=obj.getElementsByClassName('lg')[0];
+		
+		obj.onmouseleave=function (ev){
+			var oEvent=ev || event;
+			var n=getN(obj, oEvent);
+			switch (n)
+			{
+				case 0:
+					var left=348;
+					var top=0;
+					break;
+					
+				case 1:
+					var left=0;
+					var top=240;
+					break;
+				
+				case 2:
+					var left=-348;
+					var top=0;
+					break;
+					
+				case 3:
+					var left=0;
+					var top=-240;
+					break;
+			}
+			
+			move(olgSpan, {top:top, left:left});
+		};
+	};
+	function getN(obj, ev)
+	{
+		var x=obj.offsetLeft+obj.offsetWidth/2-ev.clientX;
+		
+		var y=obj.offsetTop+obj.offsetHeight/2-ev.clientY;
+		console.log('x'+x+';'+'y'+y+';')
+		return Math.round((d2a(Math.atan2(y, x))+180)/90)%4;
+	}
+	function d2a(d)
+	{
+		return d*180/Math.PI;
+	}
+	})();
+	//日历
+	var oC=document.getElementById('cale');
+	var oCale_close=document.getElementById('cale_close');
+	oCale_close.onclick=function(){
+		oC.style.display='none';
+	};
+	var oCT=document.getElementById('cale_t1');
+	oCT.onfocus=function (){
+		oCDiv.style.display='block';
+	};
+	
+	oCT.onclick=function (ev){
+		var oEvent=ev || event;
+		oEvent.cancelBubble=true;
+	};
+	// 日历
+	var oCDiv=document.getElementById('calendar');
+	var oCSpan=oCDiv.getElementsByTagName('span')[0];
+	var oCUl=oCDiv.getElementsByTagName('ul')[0];
+	
+	
+	oCDiv.style.left=oCT.offsetLeft+201+'px';
+	oCDiv.style.top=oCT.offsetTop+oCT.offsetHeight+153+'px';
+	
+	// 本月
+	var now=0;
+	create();
+	
+	// 下个月
+	var oNext=oCDiv.getElementsByClassName('next')[0];
+	oNext.onclick=function (ev){
+		var oEvent=ev || event;
+		now++;
+		create();
+		oEvent.cancelBubble=true;
+	};
+	
+	// 上个月
+	var oPrev=oCDiv.getElementsByClassName('prev')[0];
+	oPrev.onclick=function (ev){
+		var oEvent=ev || event;
+		now--;
+		create();
+		oEvent.cancelBubble=true;
+	};
+	
+	function create()
+	{
+		oCUl.innerHTML='';
+		
+		var oDate=new Date(); // ?
+		oDate.setMonth(oDate.getMonth()+now);
+		
+		var y=oDate.getFullYear();
+		var m=oDate.getMonth();
+		oCSpan.innerHTML=y+'年'+toDub(m+1)+'月';
+		
+		// 空格
+		var oDate=new Date(); // ?
+		oDate.setMonth(oDate.getMonth()+now);
+		oDate.setDate(1);
+		var week=oDate.getDay();
+		(week==0) && (week=7);
+		for (var i=0; i<week-1; i++)
+		{
+			var oCLi=document.createElement('li');
+			
+			oCUl.appendChild(oCLi);
+		}
+		
+		// 真实日期
+		var oDate=new Date(); // ?
+		oDate.setMonth(oDate.getMonth()+now);
+		oDate.setMonth(oDate.getMonth()+1, 1);
+		oDate.setDate(0);
+		var total=oDate.getDate();
+		for (var i=0; i<total; i++)
+		{
+			var oCLi=document.createElement('li');
+			oCLi.innerHTML=toDub(i+1);
+			
+			oCUl.appendChild(oCLi);
+		}
+		
+		// 周末
+		var aCLi=oCUl.children;
+		for (var i=0; i<aCLi.length; i++)
+		{
+			if (i%7==5 || i%7==6)
+			{
+				aCLi[i].className='week';
+			}
+		}
+		
+		// 今天
+		if (now == 0)
+		{
+			var oDate=new Date();
+			var today=oDate.getDate();
+			for (var i=0; i<aCLi.length; i++)
+			{
+				if (aCLi[i].innerHTML == today)
+				{
+					aCLi[i].className='today';
+					aCLi[i].innerHTML='今天';
+				}
+				else if (aCLi[i].innerHTML < today)
+				{
+					aCLi[i].className='past';
+				}
+			}
+		}
+		else if (now < 0)
+		{
+			for (var i=0; i<aCLi.length; i++)
+			{
+				aCLi[i].className='past';
+			}
+		}
+		
+		// 加事件
+		if (now > 0)
+		{
+			for (var i=0; i<aCLi.length; i++)
+			{
+				aCLi[i].onclick=function (){
+					oCT.value=oCSpan.innerHTML+this.innerHTML+'日';
+				};
+			}
+		}
+		else if (now == 0)
+		{
+			var today=new Date().getDate();
+			for (var i=0; i<aCLi.length; i++)
+			{	
+				if (aCLi[i].innerHTML == '今天')
+				{
+					aCLi[i].onclick=function (){
+						oCT.value=oCSpan.innerHTML+toDub(today)+'日';
+					};
+				}
+				else if (aCLi[i].innerHTML > today)
+				{
+					aCLi[i].onclick=function (){
+						oCT.value=oCSpan.innerHTML+this.innerHTML+'日';
+					};
+				}
+			}
+		}	
+	}
+	// 消失
+	document.onclick=function (){
+		oCDiv.style.display='none';
+	};
+	function toDub(n)
+	{
+		return n<10 ? '0'+n : ''+n;
+	}	
+	//点击出现效果
+	var ojs_effect=document.getElementById('js_con_con1');
+	var ojs_li=ojs_effect.getElementsByClassName('lg');
+	var oChild=ojs_effect.getElementsByClassName('children');
+	for(var i=0;i<ojs_li.length;i++)
+	{
+		ojs_li[i].index=i;
+		ojs_li[i].onclick=function(){
+			oChild[this.index].style.display='block';
+		};
+	}
+	var oContact=document.getElementById('contact');
+	var oContact_a=oContact.getElementsByTagName('a');
+	var oContact_div=oContact.getElementsByTagName('div');
+	for(var i=0;i<oContact_a.length;i++)
+	{
+		oContact_a[i].index=i;
+		oContact_a[i].onmouseover=function(){
+			this.style.background='';
+			oContact_div[this.index].style.display='block';
+		};
+		oContact_a[i].onmouseout=function(){
+			this.style.background='#6363FC';
+			oContact_div[this.index].style.display='none';
+		};
+	}
+	//js照片墙
+	/*var oWall=document.getElementById('wall');
+	var oWall_li=oWall.getElementsByTagName('li');
+	var oWall_btn=document.getElementById('wall_btn');
+	var oWall_li=oWall.getElementsByTagName('li');
+	var oWall_btn=document.getElementById('wall_btn');
+	var Near=null;
+	var aWall=[];
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		aWall.push({
+			left:oWall_li[i].offsetLeft,
+			top:oWall_li[i].offsetTop
+		});
+	}
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		oWall_li[i].style.position='absolute';
+		oWall_li[i].style.left=aWall[i].left+'px';
+		oWall_li[i].style.top=aWall[i].top+'px';
+		oWall_li[i].style.margin=0;
+	}
+	//随机换
+	oWall_btn.onclick=function(){
+		aWall.sort(function(){
+			return Math.random()-0.5;
+		});
+		for(var i=0;i<oWall_li.length;i++)
+		{
+			move(oWall_li[i],aWall[i]);
+		}
+	};
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		oWall_li[i].index=i;
+		drag(oWall_li[i]);
+	}
+	//拖拽
+	function drag(obj)
+	{
+		obj.onmousedown=function(ev){
+			obj.style.zIndex++;
+			var oEvent=ev||event;
+			var disX=oEvent.clientX-obj.offsetLeft;
+			var disY=oEvent.clientY-obj.offsetTop;
+			document.onmousemove=function(ev){
+				var oEvent=ev||event;
+				var left=oEvent.clientX-disX;
+				var top=oEvent.clientY-disY;
+				
+				obj.style.left=left+'px';
+				obj.style.top=top+'px';
+				
+				Near=findarr(obj);
+				if(Near)//有最近
+				{
+					for(var i=0;i<oWall_li.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+					
+					Near.className='active';
+				}
+				else//没有最近
+				{
+					for(var i=0;i<oWall_li.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+				}
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				
+				if(Near)//有近的 换位置
+				{
+					move(obj,aWall[Near.index]);
+					move(Near,aWall[obj.index]);
+				   console.log('near:'+Near.index+'obj'+obj.index);
+					
+					//换下标
+					var tmp=obj.index;
+					obj.index=Near.index;
+					Near.index=tmp;
+					
+					for(var i=0;i<aWall.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+					
+				}
+				else //没有最近的
+				{
+					move(obj,aWall[obj.index]);
+					
+				}
+				obj.releatedRequest&&obj.releatedRequest();
+			};
+			obj.setRequest&&obj.setRequest();
+			return false;
+		};
+	}
+	function getPos(obj)
+	{
+		var left=0;
+		var top=0;
+		while(obj)
+		{
+			left+=obj.offsetLeft;
+			top+=obj.offsetTop;
+			obj=obj.offsetParent;
+		}
+		return {left:left,top:top};
+	}
+	//寻找最近的
+	function findarr(obj)
+	{
+		var minArr=999;
+		var minIndex=-1;
+		for(var i=0;i<oWall_li.length;i++)
+		{
+			if(oWall_li[i]!=obj)
+			{
+				if(test(obj,oWall_li[i]))
+				{
+					var dis=getDis(obj,oWall_li[i]);
+					if(dis<minArr)
+					{
+						minArr=dis;
+						minIndex=i;
+						
+					}
+				}
+			}
+		}
+		if(minIndex==-1)
+		{
+			return null;
+		}
+		else
+		{
+			return oWall_li[minIndex];
+			
+		}
+	}
+	//检测
+	function test(obj1,obj2)
+	{
+		var t1=obj1.offsetLeft;//动
+		var b1=t1+obj1.offsetHeight;
+		var l1=obj1.offsetLeft;
+		var r1=l1+obj1.ofsetWidth;
+		
+		var t2=obj2.offsetLeft;//不动
+		var b2=t2+obj2.offsetHeight;
+		var l2=obj2.offsetLeft;
+		var r2=l2+obj2.ofsetWidth;
+		
+		if(r1<l2||b1<t2||l1>r2||t1>b2)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	function getDis(obj1,obj2)
+	{
+		var x=obj1.offsetLeft+obj1.offsetWidth/2-(obj2.offsetLeft+obj2.offsetWidth/2);
+		var y=obj1.offsetTop+obj1.offsetHeight/2-(obj2.offsetTop+obj2.offsetHeight/2);
+		return Math.sqrt(x*x+y*y);
+	}*/
+	//网址
+	var oWork=document.getElementById('work');
+	var oWeb=getClass(oWork,'web');
+	for(var i=0;i<oWeb.length;i++)
+	{
+		oWeb[i].onmouseover=function(){
+			this.style.background='rgba('+ran(0,256)+','+ran(0,256)+','+ran(0,256)+',1)';
+		};
+		oWeb[i].onmouseout=function(){
+			this.style.background='rgba('+ran(0,256)+','+ran(0,256)+','+ran(0,256)+',1)';
+		};
+	}
+	function ran(n,m){
+		return Math.ceil(Math.random()*(m-n)+n);
+	};
+	//官网
+	var oWork_Btn=document.getElementById('work_btn');
+	var oWork_ul=document.getElementById('work_ul');
+	var awork_Li=oWork_ul.getElementsByTagName('li');
+	
+	//  布局转换
+	var awPos=[];
+	for (var i=0; i<awork_Li.length; i++)
+	{
+		var left=awork_Li[i].offsetLeft;
+		var top=awork_Li[i].offsetTop;
+		
+		awork_Li[i].style.left=left+'px';
+		awork_Li[i].style.top=top+'px';
+		
+		awPos.push({left:left, top:top});
+	}
+	
+	for (var i=0; i<awork_Li.length; i++)
+	{
+		awork_Li[i].style.position='absolute';
+		awork_Li[i].style.margin=0;
+	}
+	
+	/*// 测试
+	for (var i=0; i<awork_Li.length; i++)
+	{
+		awork_Li[i].innerHTML=i;
+	}*/
+	
+	//个人介绍
+	var oContact=document.getElementById('contact');
+	var oContact_a=oContact.getElementsByTagName('a');
+	var oContact_div=oContact.getElementsByTagName('div');
+	for(var i=0;i<oContact_a.length;i++)
+	{
+		oContact_a[i].index=i;
+		oContact_a[i].onmouseover=function(){
+			this.style.background='#6363FC';
+			oContact_div[this.index].style.display='block';
+		};
+		oContact_a[i].onmouseout=function(){
+			this.style.background='';
+			oContact_div[this.index].style.display='none';
+		};
+	}
+	//进度条
+	var ojs_con_con2=document.getElementById('js_con_con2');
+	
+	var oBar_html=document.getElementById('bar_html');
+	var ojs_con_btn2=document.getElementById('js_con_btn2');
+	var oBar_css=document.getElementById('bar_css');
+	var oBar_js=document.getElementById('bar_javascript');
+	var oBar_jq=document.getElementById('bar_jquery');
+	var oBar_css3=document.getElementById('bar_css3');
+	var oBar_html5=document.getElementById('bar_html5');
+	var oHome=document.getElementById('home');
+	var opass_js=document.getElementById('pass_js');
+	move(oBar_html,{width:500},{easing:Tween.Elastic.easeInOut,duration:4000});
+	move(oBar_css,{width:500},{easing:Tween.Elastic.easeInOut,duration:4000});
+	move(oBar_js,{width:450},{easing:Tween.Elastic.easeInOut,duration:4000});
+	move(oBar_jq,{width:450},{easing:Tween.Elastic.easeInOut,duration:4000});
+	move(oBar_css3,{width:400},{easing:Tween.Elastic.easeInOut,duration:4000});
+	move(oBar_html5,{width:400},{easing:Tween.Elastic.easeInOut,duration:4000});
+	//联系方式
+	var oContact=document.getElementById('contact');
+	var oContact_a=oContact.getElementsByTagName('a');
+	var oContact_div=oContact.getElementsByTagName('div');
+	for(var i=0;i<oContact_a.length;i++)
+	{
+		oContact_a[i].index=i;
+		oContact_a[i].onmouseover=function(){
+			this.style.background='#6363FC';
+			oContact_div[this.index].style.display='block';
+		};
+		oContact_a[i].onmouseout=function(){
+			this.style.background='';
+			oContact_div[this.index].style.display='none';
+		};
+	}
+	//突出
+	var op_Btn=document.getElementById('p_btn');
+	var op_Btn2=document.getElementById('p_btn2');
+	var op_Row=document.getElementById('p_row');
+	var op_Col=document.getElementById('p_col');
+	
+	op_Btn.onclick=function (){
+		move(op_Row, {right:80}, 300, function (){
+			op_Col.style.display='block';
+			move(op_Col, {top:80}, 500);
+		});
+	};
+	op_Btn2.onclick=function (){
+		move(op_Col, {top:-220}, 500, function (){
+			op_Col.style.display='none';
+			move(op_Row, {right:-120}, 300);
+		});
+	};
+	
+	/*图片轮播*/
+	var obanner=document.getElementById('banner');
+	var abanner_Btn=document.getElementById('banner_div').getElementsByTagName('ol')[0].children;
+	var obanner_ul=document.getElementById('banner_ul');
+	var abanner_Li=banner_ul.children;
+	var obanner_close=document.getElementById('banner_close');
+	obanner_close.onclick=function(){
+		obanner.style.display='none';
+	};
+	for (var i=0; i<abanner_Btn.length; i++)
+	{
+		(function (index){
+			abanner_Btn[i].onmouseover=function (){
+				
+				for (var i=0; i<abanner_Btn.length; i++)
+				{
+					abanner_Btn[i].className='';
+					abanner_Li[i].style.zIndex=1;
+					move(abanner_Li[i], {opacity:0}, 300);
+				}
+				
+				this.className='active';
+				abanner_Li[index].style.zIndex=2;
+				move(abanner_Li[index], {opacity:1}, 300);
+			};
+		})(i);
+	}
+	var oBack=document.getElementById('back');
+	var oHome=document.getElementById('home');
+	oBack.onclick=function(){
+		move(oHome,{top:0});
+	
+	};
+	window.onscroll=function(){
+		var oScroll=document.documentElement.scrollTop||document.body.scrollTop;
+		if(oScroll>=50)
+		{
+			oBack.style.display='block';
+			oBack.onclick=function(){
+				oScroll=0;
+			};
+		}
+	};
+	/*图片时钟*/
+	show();
+	setInterval(show,1000);
+	function show()
+	{
+		var odate=new Date();
+		var y=odate.getFullYear();
+		var month=odate.getMonth();
+		var d=odate.getDate();
+		var h=odate.getHours();
+		var m=odate.getMinutes();
+		var s=odate.getSeconds();
+		var str=y+tab(month+1)+tab(d)+tab(h)+tab(m)+tab(s);
+		var oClock=document.getElementById('clock');
+		var oimg=oClock.getElementsByTagName('img');
+		for(var i=0;i<oimg.length;i++)
+		{
+			oimg[i].src='images/'+str.charAt(i)+'.png';
+		}
+	}
+	function tab(n)
+	{
+		return n<10?'0'+n:''+n;
+	}
+	/*文字*/
+	
+};
+	
+</script>
+</head>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/yuanyiying/time">Time</a> is maintained by <a href="https://github.com/yuanyiying">yuanyiying</a>.</span>
+<body>
+<!--左边 导航-->
+<div class="nav">
+	 <div class="main_c" id="main_c">
+    	<div class="main_c1"><img src="image/logo.png"></div>
+        <div class="main_c1" id="pass_js"><img src="image/js.png"></div>
+        <div class="main_c1"><img src="image/hc.png"></div>
+        <div class="main_c1"><img src="image/jquery.png"></div>
+        <div id="main_c1_none"></div>
+    </div>
+</div>
+<div id="back" style="display:none">回到顶部</div>
+<!--右边 内容-->
+<div class="home" id="home">
+<div id="home_main">
+	<!--个人介绍-->
+	<div class="home1 page" id="box" >
+    	<div class="main_l">
+            <div class="main_l1">
+                <a href="#"></a>
+                <p>张艺璇</p>
+                <p>北京市昌平区</p>
+            </div>
+            <div class="main_l2" >
+            <p id="main_l2_p">十年前我们期待青春，现在，或许是我们致青春的时候了。</p>
+            </div>
+            <div class="main_l3" id="contact">
+                <p>我的联系方式</p>
+                <a href="#"><img src="image/tel.png"><div>手机电话：18703219529</div></a>
+                <a href="#"><img src="image/qq.jpg"><div>QQ号：1843750305</div></a>
+                <a href="#"><img src="image/weibo.png"><div>微博：Forever修景</div></a>
+                <a href="#"><img src="image/weixin.png"><div>微信：Shire0905</div></a>
+            </div>
+    	</div>
+           <div class="content" id="content" style="padding:0px 10px; display:block;position:relative">
+                <div class="main_r_con1" >
+                    <div class="tit"><p class="tit_p">自我介绍</p></div>
+                    <div class="con1">
+                            <p class="con1_tit">基本情况</p>
+                            <table>
+                                <tr><td class="table_tit">姓名：</td><td>张艺璇</td></tr>
+                                <tr><td class="table_tit">生日日期:</td><td>1993/7/19</td></tr>
+                                <tr><td class="table_tit">地址：</td><td>北京市昌平区</td></tr>
+                                <tr><td class="table_tit">手机号码：</td><td>18703219529</td></tr>
+                                <tr><td class="table_tit">邮箱：</td><td>potato0905@163.com</td></tr>
+                            </table>
+                        </div>
+                        <div class="con2">
+                            <p class="con2_tit">技能测评</p>
+                            <div class="con2_con" id="con2_con">
+                                <!--<p>
+                                    <img src="image/js.png"/>
+                                    <span>JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScrip</span>
+                                </p>
+                                <p>
+                                    <img src="image/jquery.png"/>
+                                    <span>jQuery2.0及后续版本将不再支持IE6/7/8浏览器。jQuery使用户能更方便地处理HTML（标准通用标记语言下的一</span>
+                                </p>
+                                <p>
+                                    <img src="image/hc.png"/>
+                                    <span>标准通用标记语言下的一个应用HTML标准自1999年12月发布的HTML4.01后，后继的HTML5和其它标准被束之高阁，为了推动Web标准化运</span>
+                                </p>-->
+                                <ul>
+                                 <li><i>HTML</i><div class="progress"><p class="bar" id="bar_html"></p></div></li>
+                   <li><i>CSS</i><div class="progress"><p class="bar" id="bar_css"></p></div></li>
+                   <li><i>JavaScript</i><div class="progress"><p class="bar" id="bar_javascript"></p></div></li>
+                   <li><i>JQuery</i><div class="progress"><p class="bar" id="bar_jquery"></p></div></li>
+                   <li><i>CSS3</i><div class="progress"><p class="bar" id="bar_css3"></p></div></li>
+                   <li><i>HTML5</i><div class="progress"><p class="bar" id="bar_html5"></p></div></li>
+                   				</ul>
+                            </div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="con3">
+                            <p class="con3_tit">经验</p>
+                            <ul class="con3_con" id="fold">
+                                <li>
+                                    <p class="con3_con_tit">工作经验></p>
+                                    <ul style="height:80px">
+                                        <div>
+                                            <p>2015年4月13号~2015年7月20号</p>
+                                            <span>公司：石家庄九尾狐电子科技有限公司</span>
+                                            <i>职位：web前端</i>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="con3_con_tit">大学情况></p>
+                                    <ul>
+                                        <div>
+                                            <p>2011年9月10号~2015年6月20号</p>
+                                            <span>学校：石家庄经济学院华信学院</span>
+                                            <i>专业：计算机科学以技术</i>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="con3_con_tit">自我评价></p>
+                                    <ul>
+                                        <div>本人性格开朗、为人诚恳、乐观向上、兴趣广泛、拥有较强的组织能力和适应能力、并具有较强的管理策划与组织管理协调能力。</div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+           </div>
+           <!--滚动条-->
+            <div class="scroll">
+                <div class="item" id="item">
+                    <span id="span1" style="height:30px;"></span>
+                </div>
+            </div>
+    </div>
+    <!--javascript jquery效果-->
+    <div class="home2 page">
+    	<div class="main_r_con1">
+          		  <div class="js_tit">各种效果</div>
+            <div class="js_con">
+                <div class="js_con_btn" id="js_tab_btn">
+                    <p id="js_con_btn1" class="active1">JavaScript</p>
+                    <p id="js_con_btn2">JQuery</p>
+                </div>
+                <div class="js_tab_con" id="js_tab_con">
+       		        <ul class="js_con_con" id="js_con_con1"  style="display:block;">
+                        <li class="js_tab_li1"><img src="image/wenjian/1.png"/><span class="lg">分块运动</span>
+                            <div id="block" class="children">
+                                <input type="button" value="go" id="block_btn" />
+                                <input type="button" value="close" id="block_close" />
+                                <div class="block_box" id="block_box">
+                                    <img src="image/fk/0.jpg" id="img1" />
+                                </div>
+                            </div>
+                        </li>
+                        <li class="js_tab_li1"><img src="image/wenjian/2.png"/><span class="lg">百度下拉</span>
+                           <div id="BD" class="children">
+                                <input type="button" value="close" id="BD_close">
+                                <img src="https://www.baidu.com/img/bd_logo1.png"><br>
+                                <input type="text" id="t1" value=""><input type="submit" id="BD_btn1" value="百度一下" class="bg s_btn btnhover">
+                                <ul id="ul1">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="js_tab_li1"><img src="image/wenjian/3.png"/><span class="lg">日历</span>
+                            <div id="cale" class="children" style="left:330px;top:20px;">
+                            	<input type="button" value="Close" id="cale_close">
+                                <input type="text" id="cale_t1" />
+                                <div class="calendar" id="calendar">
+                                    <a href="javascript:;" class="prev">←</a>
+                                    <a href="javascript:;" class="next">→</a>
+                                    <span>xxx年xxx月</span>
+                                    <ol>
+                                        <li>一</li>
+                                        <li>二</li>
+                                        <li>三</li>
+                                        <li>四</li>
+                                        <li>五</li>
+                                        <li class="week">六</li>
+                                        <li class="week">日</li>
+                                    </ol>
+                                    
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="js_tab_li1"><img src="image/1.jpg"/><span class="lg">突出</span>
+                        	<div id="prom" class="children">
+                            	<div id="p_btn">我喜欢的</div>
+                                <div id="p_row">动漫</div>
+                                <div id="p_col">
+                                    家庭教师
+                                    <input type="button" value="关闭" id="p_btn2" />
+                                </div>
+                            </div>
+                        </li>
+                        <li class="js_tab_li1"><img src="image/wenjian/4.png"/><span class="lg">图片轮播</span>
+                        	<div id="banner" class="children">
+                            	<input type="button" value="close" id="banner_close"/>
+                            	<div class="box" id="banner_div">
+                                    <ul id="banner_ul">
+                                        <li style="background:url(image/lb/1.jpg); z-index:1;">
+                                           
+                                        </li>
+                                        <li style="background:url(image/lb/2.jpg);">
+                                            
+                                        </li>
+                                        <li style="background:url(image/lb/3.jpg);"></li>
+                                        <li style="background:url(image/lb/4.jpg);"></li>
+                                    </ul>
+                                    
+                                    <ol>
+                                        <li class="active"></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="js_tab_li1"><img src="image/1.jpg"/><span class="lg">图片时钟</span>
+                          <div id="clock" class="children">
+                          		<input type="button" value="close" id="clock_close">
+                                <ul style="margin-top:100px;">
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/year.png">
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/month.png">
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/seven.png">
+                                <br/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/sign.png">
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/sign.png">
+                                <img src="image/clock/0.png"/>
+                                <img src="image/clock/0.png"/>
+                                </ul>
+                        </div>
+                        </li>
+                    </ul>
+                <ul class="js_con_con" id="js_con_con2" >
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--html5-->
+    <div class="home3 page"></div>
+    <!--作品-->
+    <div class="home4 page" id="work" >
+        <ul id="work_ul">
+            <li><div id="wall" class="web"><a href="zpq.html">仿照片墙</a></div></li>
+            <li><div id="weibo" class="web"><a href="weibo/weibo_test.html">仿新浪微博发言</a></div></li>
+            <li><div id="webqq" class="web"><a href="webQQ/webQQ.html">仿腾讯网页QQ聊天</a></div></li>
+            
+            <li><div id="wish" class="web"><a href="myWish/index.html">心愿墙</a></div></li>
+            
+            <li><div id="sfq" class="web"><a href="sfq.html">手风琴</a></div></li>
+            
+            <li><div id="sz" class="web"><a href="sz/sz.html">图片时钟</a></div></li>
+         
+        </ul>
+    </div>
+</div>  
+</div>
+<style>
+/*照片墙*/
+/*#wall{height:500px;z-index:2;margin-left:20px;}
+#wall p{padding:10px 10px;width:60px;height:20px;text-align:center;background-color:#ccc;font-size:15px;cursor:pointer;}
+#wall #wall_btn{top:0px;}
+#wall #wall_close{top:80px;}
+#wall .wall_con{width:586px;height:568px;padding:10px;border:1px solid #ccc;margin-left:100px;margin-top:-100px;}
+#wall .wall_con ul{display:block;clear:both;}
+#wall .wall_con ul li{padding:10px;float:left;border:1px solid #FF0;border-radius:10px;box-shadow:2px 4px 4px rgba(0,0,255,0.5);float:left;margin:10px;width:150px;height:150px;}
+#wall .wall_con ul li img{width:150px;height:150px;}
+#wall .wall_con ul .active{background-color:red;}*/
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+/*分块*/
+#block{width:1000px;height:500px;position:fixed;z-index:2;top:20px;left:200px;display:none;}
+.block_box { position:relative; width:700px; height:400px; margin:100px auto;z-indx:2; }
+.block_box #img1{width:700px;height:400px;}
+.block_box span { position:absolute; background:url(image/fk/0.jpg); opacity:0; }
+#block_btn { position:absolute; left:100px; top:50px; width:100px; height:40px; }
+#block_close { position:absolute; left:220px; top:50px; width:100px; height:40px; }
+/*百度下拉*/
+#BD{ width:682px;height:500px;position:fixed;z-index:2;top:20px;left:200px;background-color:#fff;display:none;padding-left:33px;}
+#BD img{width:270px; height:129px;margin-left:300px;}
+#BD input{width: 540px; height:36px; line-height:36px; text-indent:5px;margin-top:120px;}
+#BD input.s_btn {width: 100px;height: 40px;border:1px solid #ccc;color: rgb(255, 255, 255);font-size: 15px;letter-spacing: 1px;background: rgb(51, 133, 255);border-bottom: 1px solid rgb(45, 120, 244);outline: medium;-webkit-appearance: none;-webkit-border-radius: 0;cursor:pointer;}
+#BD #BD_close{width:100px;height:40px;position:absolute; left:-4px; top:-121px;cursor:pointer; }
+#BD #ul1{ width:542px; border:1px solid #ccc; position:absolute; left:33px; border-top:none; display:none;}
+#BD #ul1 li{ height:30px; line-height:30px; text-align:left;text-indent:5px;}
+#BD #ul1 li.on{ background:#eee;}
+/*手风琴*/
+#accor{height:500px;z-index:2;margin-top:200px;}
+#accor #accor_close{width:100px;height:40px;left:-4px; top:-121px;cursor:pointer;}
+#accor ul{display:block;width:925px;height:305px;border:1px solid red;overflow:hidden;}
+#accor ul li{position:relative;list-style:none;padding-left:20px;}
+#accor ul li img{width:500px;height:305px;}
+#accor ul li span{width:20px;height:100%;position:absolute;}
+/*日历*/
+#cale{width:600px;height:500px;position:fixed;z-index:2;top:20px;left:200px;background-color:#E4EEF1;display:none;}
+#cale .calendar { position:relative;display:none;  width:324px; border:1px solid red; background:#fff; }
+#cale .calendar span { display:block; height:40px; line-height:40px; text-align:center; font-size:16px; }
+#cale .calendar ul, .calendar ol { overflow:hidden;display:block; }
+#cale .calendar li { list-style:none; float:left; width:40px; height:40px; line-height:40px; font-size:15px; text-align:center;background:none; margin:0px;}
+#cale .week { color:#f40; }
+#cale .calendar .today { color:blue; font-size:14px; }
+#cale .past { color:#999; }
+#cale .calendar a { position:absolute; width:40px; height:40px; line-height:40px; text-align:center; text-decoration:none; }
+#cale .calendar .prev { left:0; }
+#cale .calendar .next { right:0; }
+#cale input { position:absolute; top:100px; left:200px; height:50px; font-size:30px; }
+#cale #cale_close{width:100px;height:50px;left:0px;top:0px;}
+/*进度条*/
+#con2_con{margin-left:10px;}
+#con2_con ul li i{font-style:normal;margin-right:20px;height:20px;line-height:20px;}
+#con2_con div{width:500px;height:20px;border:1px solid #f4f4f4;position:relative;}
+#con2_con div p{border:none;padding:0px;margin:0px;width:20px ;height:20px;background-color:red;position:absolute;left:0px;top:0px;}
+/*球*/
+#prom{width:600px;height:500px;position:fixed;z-index:2;top:20px;left:200px;background-color:#E4EEF1;display:none;overflow:hidden;}
+#p_btn { position:absolute; right:0; top:0; z-index:10; width:80px; height:80px; background:yellow; }
+#p_row { position:absolute; right:80px; right:-120px; top:0; z-index:1; width:200px; height:80px; background:green; }
+#p_col { display:none; position:absolute; top:80px; top:-220px; right:80px; width:200px; height:300px; background:#ccc; }
+#p_btn2 { width:100px; height:40px; }
+/*图片轮播*/
+#banner{width:600px;height:500px;position:fixed;z-index:2;top:20px;left:200px;background-color:#E4EEF1;display:none;}
+#banner input{width:80px;height:40px;}
+#banner_div{ position:relative; overflow:-hidden; width:400px; height:200px; border:5px solid #000; margin:50px auto; }
+#banner div #banner_ul {display:block;position:absolute; top:0; left:0; }
+#banner_ul li { position:absolute; top:0; left:0; width:400px; height:200px; font-size:50px; line-height:200px; text-align:center; font-weight:bold; color:red;margin:0px; }
+#banner_ul li a { display:block; width:100%; height:100%; }
+#banner_div ol { position:absolute; bottom:20px; left:50%; z-index:99; }
+#banner_div ol li { position:relative; left:-50%; top:0; float:left; width:20px; height:20px; margin:10px; background:#ccc; border-radius:50%; cursor:pointer; }
+#banner_div ol .active { background:yellow; }
+/*官网页码*/
+#work_ul { overflow:hidden; width:1111px; height:555px; padding:20px;}
+#work_ul li { width:300px; height:240px; margin:25px; float:left; list-style:none; opacity:1; line-height:200px; text-align:center; font-size:50px; font-weight:bold;transition:1s all ease; }
+#work_ul li:hover{transform:rotate(360deg);
+-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);}
+/*图片时钟*/
+#clock{width:600px;height:500px;position:fixed;z-index:2;top:20px;left:200px;background-color:#E4EEF1;display:none;}
+#clock input{width:80px;height:50px;}
+</style>
+</body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>手风琴</title>
+<style>
+*{margin:0px;padding:0px;}
+#ul1{width:925px;height:305px;border:1px solid red;position:relative;overflow:hidden;}
+#ul1 li{position:absolute;list-style:none;padding-left:20px;top:0px;eft:0px;}
+#ul1 li span{width:20px;height:100%;position:absolute;left:0px;top:0px;}
+</style>
+<script src="js/move.js"></script>
+<script>
+window.onload=function (){
+	var aLi=document.getElementsByTagName('li');
+	var aSpan=document.getElementsByTagName('span');
+	var liW=aLi[0].offsetWidth;
+	var sW=aSpan[0].offsetWidth;
+	
+	// 默认left
+	for (var i=0; i<aLi.length; i++)
+	{
+		if (i != 0)
+		{
+			aLi[i].style.left=liW+(i-1)*sW+'px';//li位置
+		}
+	}
+	for(var i=0;i<aSpan.length;i++)
+	{
+		(function(index){
+			aSpan[i].onmouseover=function(){
+			for(var i=0;i<aLi.length;i++)
+			{
+				if(i<=index)
+				{
+					move(aLi[i],{left:i*sW});
+				}
+				else
+				{
+					move(aLi[i],{left:liW+(i-1)*sW});
+				}
+			}
+			};	
+		})(i);
+		
+	}
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li >
+    	<span style="background:#F00">家</span>
+        <img src="image/sfq/0.jpg">
+    </li>
+    <li>
+    	<span  style="background:blue">庭</span>
+        <img src="image/sfq/1.jpg">
+    </li>
+    <li >
+    	<span style="background:yellow">教</span>
+       <img src="image/sfq/2.jpg">
+    </li>
+    <li>
+    	<span  style="background:green">师</span>
+      <img src="image/sfq/3.jpg">
+    </li>
+</ul>
+</body>
+</html>

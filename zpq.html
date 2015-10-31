@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>照片墙</title>
+<style>
+*{margin:0px;padding:0px;list-style:none;}
+#wall{height:500px;z-index:2;margin-left:20px;margin-top:80px;}
+#wall p{padding:10px 10px;width:60px;height:20px;text-align:center;background-color:#ccc;font-size:15px;cursor:pointer;}
+#wall #wall_btn{top:0px;}
+#wall #wall_close{top:80px;}
+#wall .wall_con{width:586px;height:568px;padding:10px;border:1px solid #ccc;margin-left:100px;margin-top:-100px;}
+#wall .wall_con ul{display:block;clear:both;}
+#wall .wall_con ul li{padding:10px;float:left;border:1px solid #FF0;border-radius:10px;box-shadow:2px 4px 4px rgba(0,0,255,0.5);float:left;margin:10px;width:150px;height:150px;}
+#wall .wall_con ul li img{width:150px;height:150px;}
+#wall .wall_con ul .active{background-color:red;}
+</style>
+<script src="js/move.js"></script>
+<script>
+window.onload=function(){
+	var oWall=document.getElementById('wall');
+	var oWall_li=oWall.getElementsByTagName('li');
+	var oWall_btn=document.getElementById('wall_btn');
+	var oWall_li=oWall.getElementsByTagName('li');
+	var oWall_btn=document.getElementById('wall_btn');
+	var Near=null;
+	var aWall=[];
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		aWall.push({
+			left:oWall_li[i].offsetLeft,
+			top:oWall_li[i].offsetTop
+		});
+	}
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		oWall_li[i].style.position='absolute';
+		oWall_li[i].style.left=aWall[i].left+'px';
+		oWall_li[i].style.top=aWall[i].top+'px';
+		oWall_li[i].style.margin=0;
+	}
+	//随机换
+	oWall_btn.onclick=function(){
+		aWall.sort(function(){
+			return Math.random()-0.5;
+		});
+		for(var i=0;i<oWall_li.length;i++)
+		{
+			move(oWall_li[i],aWall[i]);
+		}
+	};
+	for(var i=0;i<oWall_li.length;i++)
+	{
+		oWall_li[i].index=i;
+		drag(oWall_li[i]);
+	}
+	//拖拽
+	function drag(obj)
+	{
+		obj.onmousedown=function(ev){
+			obj.style.zIndex++;
+			var oEvent=ev||event;
+			var disX=oEvent.clientX-obj.offsetLeft;
+			var disY=oEvent.clientY-obj.offsetTop;
+			document.onmousemove=function(ev){
+				var oEvent=ev||event;
+				var left=oEvent.clientX-disX;
+				var top=oEvent.clientY-disY;
+				
+				obj.style.left=left+'px';
+				obj.style.top=top+'px';
+				
+				Near=findarr(obj);
+				if(Near)//有最近
+				{
+					for(var i=0;i<oWall_li.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+					
+					Near.className='active';
+				}
+				else//没有最近
+				{
+					for(var i=0;i<oWall_li.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+				}
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				
+				if(Near)//有近的 换位置
+				{
+					move(obj,aWall[Near.index]);
+					move(Near,aWall[obj.index]);
+				   console.log('near:'+Near.index+'obj'+obj.index);
+					
+					//换下标
+					var tmp=obj.index;
+					obj.index=Near.index;
+					Near.index=tmp;
+					
+					for(var i=0;i<aWall.length;i++)
+					{
+						oWall_li[i].className='';
+					}
+					
+				}
+				else //没有最近的
+				{
+					move(obj,aWall[obj.index]);
+					
+				}
+				obj.releatedRequest&&obj.releatedRequest();
+			};
+			obj.setRequest&&obj.setRequest();
+			return false;
+		};
+	}
+	function getPos(obj)
+	{
+		var left=0;
+		var top=0;
+		while(obj)
+		{
+			left+=obj.offsetLeft;
+			top+=obj.offsetTop;
+			obj=obj.offsetParent;
+		}
+		return {left:left,top:top};
+	}
+	//寻找最近的
+	function findarr(obj)
+	{
+		var minArr=999;
+		var minIndex=-1;
+		for(var i=0;i<oWall_li.length;i++)
+		{
+			if(oWall_li[i]!=obj)
+			{
+				if(test(obj,oWall_li[i]))
+				{
+					var dis=getDis(obj,oWall_li[i]);
+					if(dis<minArr)
+					{
+						minArr=dis;
+						minIndex=i;
+						
+					}
+				}
+			}
+		}
+		if(minIndex==-1)
+		{
+			return null;
+		}
+		else
+		{
+			return oWall_li[minIndex];
+			
+		}
+	}
+	//检测
+	function test(obj1,obj2)
+	{
+		var t1=obj1.offsetLeft;//动
+		var b1=t1+obj1.offsetHeight;
+		var l1=obj1.offsetLeft;
+		var r1=l1+obj1.ofsetWidth;
+		
+		var t2=obj2.offsetLeft;//不动
+		var b2=t2+obj2.offsetHeight;
+		var l2=obj2.offsetLeft;
+		var r2=l2+obj2.ofsetWidth;
+		
+		if(r1<l2||b1<t2||l1>r2||t1>b2)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	function getDis(obj1,obj2)
+	{
+		var x=obj1.offsetLeft+obj1.offsetWidth/2-(obj2.offsetLeft+obj2.offsetWidth/2);
+		var y=obj1.offsetTop+obj1.offsetHeight/2-(obj2.offsetTop+obj2.offsetHeight/2);
+		return Math.sqrt(x*x+y*y);
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="wall" class="children">
+    <p id="wall_btn">随机换</p>
+    <div class="wall_con">
+        <ul>
+           <li><img src="image/dm/1.jpg"></li>
+           <li><img src="image/dm/2.jpg"></li>
+           <li><img src="image/dm/3.jpg"></li>
+           <li><img src="image/dm/4.jpg"></li>
+           <li><img src="image/dm/5.jpg"></li>
+           <li><img src="image/dm/6.jpg"></li>
+           <li><img src="image/dm/7.jpg"></li>
+           <li><img src="image/dm/8.jpg"></li>
+           <li><img src="image/dm/9.jpg"></li>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>
