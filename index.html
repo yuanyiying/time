@@ -15,7 +15,7 @@ body{background-image:url(image/bg5.png);}
 /*主要内容*/
 .home{width:1111px;height:627px;overflow:hidden;border:1px solid red;float:left;margin-left:150px;position:relative;}
 .page{width:100%;height:620px;border:1px solid blue;overflow:hidden;position:relative;padding:10px;background-color:#266991;}
-#home_main{width:100%;height:100%;position:absolute;}
+#home_main{width:100%;height:100%;position:absolute;top:0px;}
 /*JS*/
 .js_tit{height:30px;line-height:30px;font-size:20px;width:970px;border-bottom:1px solid #fff;color:#000;}
 .js_con .js_con_btn{height:40px;width:700px;}
@@ -90,6 +90,7 @@ text-shadow:10px 10px 5px rgba(255,0,0,.5);
 </style>
 <script src="js/move.js"></script>
 <script src="js/jsonp.js"></script>
+<script src="js/ajax.js"></script>
 <script>
 window.onload=function(){
 	//分类导航
@@ -144,6 +145,7 @@ window.onload=function(){
 	var oMain_btn=oMain_c.getElementsByTagName('div');
 	var oHome=document.getElementById('home');
 	var oHome_page=getClass(oHome,'page');
+	alert(oHome_page);
 	var oHome_main=document.getElementById('home_main');
 	for(var i=0;i<oMain_btn.length;i++)
 	{
@@ -155,7 +157,9 @@ window.onload=function(){
 			{
 				oHome_page_H=oHome_page[0].offsetHeight
 			}
+			alert(1);
 			move(oHome_main,{top:-a*oHome_page_H});
+			alert(oHome_main.style.top);
 			
 		};
 	}
