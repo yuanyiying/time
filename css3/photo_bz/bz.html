@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>爆炸效果</title>
+<style>
+*{margin:0px;padding:0px;}
+#div1{width:700px;height:400px;margin:10px auto;position:relative;background:url(img/1.jpg);margin:50px auto;}
+#div1 span{position:absolute;background:url(img/0.jpg) no-repeat;translation:1s all ease;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var L=7;//列
+	var H=4;//行
+	for(var h=0;h<H;h++)
+	{
+		for(var l=0;l<L;l++)
+		{
+			var oSpan=document.createElement('span');
+			oSpan.style.width=oDiv.offsetWidth/L+'px';
+			oSpan.style.height=oDiv.offsetHeight/H+'px';
+			oDiv.appendChild(oSpan);
+
+			oSpan.style.top=h*oSpan.offsetHeight+'px';
+			oSpan.style.left=l*oSpan.offsetWidth+'px';
+			oSpan.style.backgroundPosition='-'+l*oSpan.offsetWidth+'px -'+h*oSpan.offsetHeight+'px';
+		}
+	}
+	var n=0;
+	var flag=true;
+	var oSpan=document.getElementsByTagName('span');
+	oDiv.onclick=function(){
+		if(flag==false) return;
+		flag=false;
+		n++;
+		for(var i=0;i<oSpan.length;i++)
+		{
+			oSpan[i].style.transition='1s all ease';
+			var x=oSpan[i].offsetLeft+oSpan[i].offsetWidth/2-oDiv.offsetWidth/2;
+			var y=oSpan[i].offsetTop+oSpan[i].offsetHeight/2-oDiv.offsetHeight/2;
+			oSpan[i].style.transform='translate3d('+x+'px,'+y+'px,100px) rotateX('+rnd(0,180)+'deg) rotateY('+rnd(0,180)+'deg)';
+			oSpan[i].style.opacity=0;
+		}
+		
+	};
+	oSpan[0].addEventListener('transitionend',function(){
+		flag=true;
+		for(var i=0;i<oSpan.length;i++)
+		{
+			oSpan[i].style.transition='none';
+			oSpan[i].style.transform='translate3d(0px,0px,0px) rotateX(0deg) rotateY(0deg)';
+			oSpan[i].style.opacity=1;
+			oSpan[i].style.backgroundImage='url(img/'+n%3+'.jpg)';//**
+			oDiv.style.background='url(img/'+(n+1)%3+'.jpg)';
+		}
+		
+	},false);
+	function rnd(n,m)
+	{
+		return parseInt(Math.random()*(m-n)+n);
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>
