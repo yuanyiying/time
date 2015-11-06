@@ -468,7 +468,8 @@ window.onload=function(){
 	var oCUl=oCDiv.getElementsByTagName('ul')[0];
 	
 	oCale_close.onclick=function(){
-		oC.style.display='none';
+		this.parentNode.style.display='none';
+		ojs_bg.style.display='none';
 	};
 	var oCT=document.getElementById('cale_t1');
 	oCT.onfocus=function (){
