@@ -2,70 +2,217 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>爆炸效果</title>
+<title>各种效果</title>
 <style>
-*{margin:0px;padding:0px;}
-body{background:url(img/page.png) no-repeat;width:100%;height:100%;overflow:hidden;}
-#div1{width:700px;height:400px;margin:10px auto;position:relative;background:url(img/1.jpg);margin:50px auto;}
-#div1 span{position:absolute;background:url(img/0.jpg) no-repeat;translation:1s all ease;}
+*{margin:0px;padding:0px;list-style:none;}
+body{background:url(img/page.png) no-repeat;width:100%;height:100%;overflow:hidden;background-size:cover;}
+/*选项卡*/
+#ul_btn{width:406px;height:40px;margin:5px auto;}
+#ul_btn li{width:100px;background:#339999;height:40px;line-height:40px;color:#fff;margin:0px 10px;text-align:center;float:left;cursor:pointer;}
+#con{width:1200px;height:500px;overflow:hidden;margin:50px auto;position:relative;}
+#ol_con{width:3600px;height:500px;position:absolute;left:0px;top:0px;}
+#ol_con li{float:left;}
+/*爆炸*/
+#b_div1{width:1200px;height:500px;background:url(img/1.jpg);float:left;position:relative;lefT:0;top:0;}
+#b_div1 span{position:absolute;background:url(img/0.jpg) no-repeat;translation:1s all ease;}
+/*翻页*/
+#f_div1{width:1200px;height:500px;background:url(img/0.jpg) no-repeat;float:left;position:relative;lefT:0;top:0;}
+#page1{width:50%;height:100%;position:absolute;right:0px;top:0px;z-index:2;transform-style:preserve-3d;transform-origin:left center;transform:1s all ease;}
+#page1 div{width:100%;height:100%;position:absolute;left:0px;top:0px;}
+#page1 #front{background:url(img/0.jpg) no-repeat right 0;z-index:2;backface-visibility:hidden;}
+#page1 #back{background:url(img/1.jpg) no-repeat left top;z-index:1; transform:scale(-1,1);}
+#page2{width:50%;height:100%;background:url(img/1.jpg) right 0;position:absolute;right:0px;top:0px;z-index:1;}
+
+/*块*/
+#box{ width:1200px; height:500px; float:left;position:relative;lefT:0;top:0;}
+#box span{ position:absolute; transform-style:preserve-3d; transition:1s all ease;}
+#box span em{ width:100%; height:100%; position:absolute; left:0; top:0;}
+#box span em.front{ background:url(img/0.jpg) no-repeat; z-index:2; transform:translateZ(1.5px);}
+#box span em.back{ background:url(img/1.jpg) no-repeat; z-index:1; transform:translateZ(-1px) scale(-1,1);}
 </style>
+<script src="move.js"></script>
 <script>
 window.onload=function(){
-	var oDiv=document.getElementById('div1');
-	var L=7;//列
-	var H=4;//行
-	for(var h=0;h<H;h++)
-	{
-		for(var l=0;l<L;l++)
-		{
-			var oSpan=document.createElement('span');
-			oSpan.style.width=oDiv.offsetWidth/L+'px';
-			oSpan.style.height=oDiv.offsetHeight/H+'px';
-			oDiv.appendChild(oSpan);
-
-			oSpan.style.top=h*oSpan.offsetHeight+'px';
-			oSpan.style.left=l*oSpan.offsetWidth+'px';
-			oSpan.style.backgroundPosition='-'+l*oSpan.offsetWidth+'px -'+h*oSpan.offsetHeight+'px';
-		}
+	//选项卡
+	var oUl_btn=document.getElementById('ul_btn');
+	var oLi=oUl_btn.getElementsByTagName('li');
+	var oOl_con=document.getElementById('ol_con');
+	
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].index=i;
+		oLi[i].onclick=function(){
+			var a=this.index;
+		
+			move(oOl_con,{left:-a*1200+'px'})
+		};
 	}
-	var n=0;
-	var flag=true;
-	var oSpan=document.getElementsByTagName('span');
-	oDiv.onclick=function(){
-		if(flag==false) return;
-		flag=false;
-		n++;
-		for(var i=0;i<oSpan.length;i++)
+	
+	//爆炸
+	(function(){
+		var oDiv=document.getElementById('b_div1');
+		var L=12;//列
+		var H=5;//行
+		for(var h=0;h<H;h++)
 		{
-			oSpan[i].style.transition='1s all ease';
-			var x=oSpan[i].offsetLeft+oSpan[i].offsetWidth/2-oDiv.offsetWidth/2;
-			var y=oSpan[i].offsetTop+oSpan[i].offsetHeight/2-oDiv.offsetHeight/2;
-			oSpan[i].style.transform='translate3d('+x+'px,'+y+'px,100px) rotateX('+rnd(0,180)+'deg) rotateY('+rnd(0,180)+'deg)';
-			oSpan[i].style.opacity=0;
+			for(var l=0;l<L;l++)
+			{
+				var oSpan=document.createElement('span');
+				oSpan.style.width=oDiv.offsetWidth/L+'px';
+				oSpan.style.height=oDiv.offsetHeight/H+'px';
+				oDiv.appendChild(oSpan);
+	
+				oSpan.style.top=h*oSpan.offsetHeight+'px';
+				oSpan.style.left=l*oSpan.offsetWidth+'px';
+				oSpan.style.backgroundPosition='-'+l*oSpan.offsetWidth+'px -'+h*oSpan.offsetHeight+'px';
+			}
+		}
+		var n=0;
+		var flag=true;
+		var oSpan=document.getElementsByTagName('span');
+		oDiv.onclick=function(){
+			if(flag==false) return;
+			flag=false;
+			n++;
+			for(var i=0;i<oSpan.length;i++)
+			{
+				oSpan[i].style.transition='1s all ease';
+				var x=oSpan[i].offsetLeft+oSpan[i].offsetWidth/2-oDiv.offsetWidth/2;
+				var y=oSpan[i].offsetTop+oSpan[i].offsetHeight/2-oDiv.offsetHeight/2;
+				oSpan[i].style.transform='translate3d('+x+'px,'+y+'px,100px) rotateX('+rnd(0,180)+'deg) rotateY('+rnd(0,180)+'deg)';
+				oSpan[i].style.opacity=0;
+			}
+			
+		};
+		oSpan[0].addEventListener('transitionend',function(){
+			flag=true;
+			for(var i=0;i<oSpan.length;i++)
+			{
+				oSpan[i].style.transition='none';
+				oSpan[i].style.transform='translate3d(0px,0px,0px) rotateX(0deg) rotateY(0deg)';
+				oSpan[i].style.opacity=1;
+				oSpan[i].style.backgroundImage='url(img/'+n%3+'.jpg)';//**
+				oDiv.style.background='url(img/'+(n+1)%3+'.jpg)';
+			}
+			
+		},false);
+		function rnd(n,m)
+		{
+			return parseInt(Math.random()*(m-n)+n);
+		}
+	})();
+	//翻页
+	(function(){
+		var oDiv=document.getElementById('f_div1');
+		var oPage1=document.getElementById('page1');
+		var oPage2=document.getElementById('page2');
+		var oFornt=document.getElementById('front');
+		var oBack=document.getElementById('back');
+		var oPage
+		var n=0;
+		var flag=true;
+		oDiv.onclick=function(){
+			if(flag==false)return;
+			flag=false;
+			n++;
+			oPage1.style.transition='1s all ease';
+			oPage1.style.transform='perspective(800px) rotateY(-180deg)';
+		};
+		oPage1.addEventListener('transitionend',function(){
+			flag=true;
+			oPage1.style.transition='none';
+			oPage1.style.transform='perspective(800px) rotateY(0deg)';
+			oFornt.style.backgroundImage='url(img/'+n%3+'.jpg)';
+			oBack.style.backgroundImage='url(img/'+(n+1)%3+'.jpg)';
+			oPage2.style.backgroundImage='url(img/'+(n+1)%3+'.jpg)';
+			oDiv.style.backgroundImage='url(img/'+n%3+'.jpg)';
+		},false);
+	})();
+	//块运动
+	(function(){
+		var oBox=document.querySelector('#box');	
+		var R=5;
+		var C=12;
+		for(var r=0; r<R; r++){
+			for(var c=0; c<C; c++){
+				var oSpan=document.createElement('span');
+				oSpan.style.width=oBox.offsetWidth/C+'px';
+				oSpan.style.height=oBox.offsetHeight/R+'px';
+				oBox.appendChild(oSpan);
+				
+				oSpan.style.left=c*oSpan.offsetWidth+'px';
+				oSpan.style.top=r*oSpan.offsetHeight+'px';
+				
+				oSpan.innerHTML='<em class="front"></em><em class="back"></em>';
+				oSpan.children[0].style.backgroundPosition='-'+c*oSpan.offsetWidth+'px -'+r*oSpan.offsetHeight+'px';
+				oSpan.children[1].style.backgroundPosition='-'+c*oSpan.offsetWidth+'px -'+r*oSpan.offsetHeight+'px';
+				
+				oSpan.c=c;
+				oSpan.r=r;
+				
+			}
 		}
 		
-	};
-	oSpan[0].addEventListener('transitionend',function(){
-		flag=true;
-		for(var i=0;i<oSpan.length;i++)
-		{
-			oSpan[i].style.transition='none';
-			oSpan[i].style.transform='translate3d(0px,0px,0px) rotateX(0deg) rotateY(0deg)';
-			oSpan[i].style.opacity=1;
-			oSpan[i].style.backgroundImage='url(img/'+n%3+'.jpg)';//**
-			oDiv.style.background='url(img/'+(n+1)%3+'.jpg)';
-		}
-		
-	},false);
-	function rnd(n,m)
-	{
-		return parseInt(Math.random()*(m-n)+n);
-	}
+		//
+		var iNow=0;
+		var bReady=true;
+		oBox.onclick=function(){
+			if(bReady==false)return;
+			bReady=false;
+			
+			iNow++;
+			
+			var aSpan=oBox.children;
+			
+			for(var i=0; i<aSpan.length; i++){
+				(function(oSpan){
+					setTimeout(function(){
+						oSpan.style.transition='1s all cubic-bezier(1,-0.91, 0, 1.91)';
+						oSpan.style.transform='perspective(800px) rotateY(180deg)';
+					},100*(oSpan.c+oSpan.r));
+				})(aSpan[i])
+			}
+			
+			//
+			aSpan[aSpan.length-1].addEventListener('transitionend',function(){
+				bReady=true;
+				for(var i=0; i<aSpan.length; i++){
+					aSpan[i].style.transition='none';
+					aSpan[i].style.transform='perspective(800px) rotateY(0deg)';
+					aSpan[i].children[0].style.backgroundImage='url(img/'+iNow%3+'.jpg)';
+					aSpan[i].children[1].style.backgroundImage='url(img/'+(iNow+1)%3+'.jpg)';
+				}
+			},false);
+		};
+	})();
+	
 };
 </script>
 </head>
 
 <body>
-<div id="div1"></div>
+<ul id="ul_btn">
+	<li>爆炸效果</li>
+	<li>翻页效果</li>
+	<li>块变化</li>
+</ul>
+<div id="con">
+	<ol id="ol_con">
+		<li>
+			<div id="b_div1"></div>
+		</li>
+		<li>
+			<div id="f_div1">
+				<div id="page1">
+			    	<div id="front"></div>
+			        <div id="back"></div>
+			    </div>
+			    <div id="page2"></div>
+			</div>
+		</li>
+		<li>
+			<div id="box"></div>
+		</li>
+	</ol>
+</div>
 </body>
 </html>

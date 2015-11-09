@@ -163,7 +163,8 @@ window.onload=function(){
 		};
 	}			
 	//js效果
-	var oJscon2=document.getElementById('js_con_con2');
+	/*var oJscon2=document.getElementById('js_con_con2');
+	alert(oJscon2)
 	var oLi=oJscon2.getElementsByClassName('js_tab_li2');
 	var oImg=oJscon2.getElementsByTagName('img');
 	var oFont=oJscon2.getElementsByTagName('p');
@@ -180,9 +181,9 @@ window.onload=function(){
 			move(this.children[0],{top:0});
 			move(this.children[1],{height:0});
 		};
-	}
+	}*/
 	//js_tab javascript内容点击出现
-	var js_tab_Btn=document.getElementById('js_tab_btn');
+	/*var js_tab_Btn=document.getElementById('js_tab_btn');
 	var js_Btn=js_tab_Btn.getElementsByTagName('p');
 	var js_tab_Con=document.getElementById('js_tab_con');
 	var js_Con=js_tab_Con.getElementsByClassName('js_con_con');
@@ -201,8 +202,8 @@ window.onload=function(){
 			ojs_bg.style.display='block';
 			
 		};
-	}
-	//js分块运动
+	}*/
+	/*//js分块运动
 	var oBlock=document.getElementById('block');
 	var block_oBox=document.getElementById('block_box');
 	var block_oBtn=document.getElementById('block_btn');
@@ -278,9 +279,9 @@ window.onload=function(){
 				clearInterval(timer);
 			}
 		}, 200);
-	};
+	};*/
 	//百度下拉
-	var BD_oT=document.getElementById('t1');
+	/*var BD_oT=document.getElementById('t1');
 	var oUl=document.getElementById('ul1');	
 	var BD_oBtn=document.getElementById('BD_btn1');
 	var BD_close=document.getElementById('BD_close');
@@ -341,9 +342,9 @@ window.onload=function(){
 		
 		oldValue=BD_oT.value;	
 	};
-	
+	*/
 	//键盘控制
-	BD_oT.onkeydown=function(ev){
+	/*BD_oT.onkeydown=function(ev){
 		var aLi=oUl.children;
 		var oEvent=ev || event;
 		if(oEvent.keyCode==40){
@@ -373,7 +374,105 @@ window.onload=function(){
 	BD_oBtn.onclick=function(){
 		window.open('https://www.baidu.com/s?wd='+BD_oT.value,'_self');
 		BD_oT.value='';	
-	};
+	};*/
+	//导航条
+	/*(function(){
+		var oNav=document.getElementById('nav');
+		var aLi=oNav.getElementsByTagName('li');
+		alert(aLi)
+		var oNav_btn=document.getElementById('nav_btn');
+		oNav_btn.onclick=function(){
+			oNav.style.display='none';
+			ojs_bg.style.display='none';
+		};
+		for (var i=0; i<aLi.length; i++)
+		{
+			(function (){
+				var oEm=aLi[i].getElementsByTagName('em')[0];	
+				aLi[i].onmouseover=function (){
+					move(oEm, {height:36}, {
+						duration:300
+					});
+				};
+				
+				aLi[i].onmouseout=function (){
+					move(oEm, {height:0}, {
+						duration:300
+					});
+				};
+			})();
+		}
+	})();*/
+	/*//圆顺序播放出来
+	(function(){
+		var oC=document.getElementById('circle');
+		var oDiv=document.getElementById('c_div1');
+		var oC_close=document.getElementById('c_close');
+		
+		oC_close.onclick=function(){
+			oC.style.display='none';
+			ojs_bg.style.display='none';
+		};
+		var R=oDiv.offsetWidth/2;
+		var a=0; // 角度
+		var total=5;
+		
+		var aSpan=[];
+		for (var i=0; i<total; i++)
+		{
+			var oSpan=document.createElement('span');
+			oDiv.appendChild(oSpan);
+			aSpan.push(oSpan);
+		}
+		
+		var n=0;
+		oC.onclick=function (){
+			n++;
+			if (n%2 == 1)
+			{
+				for (var i=0; i<total; i++)
+				{
+					var target=360*i/total;
+					
+					move2(aSpan[i], target);
+					console.log(aSpan[i].style.left)
+				}
+			}
+			else
+			{
+				for (var i=0; i<total; i++)
+				{
+					move2(aSpan[i], 0);
+				}
+			}
+		};
+		
+		function move2(obj, target)
+		{
+			var start=obj.a || 0;
+			var dis=target-start;
+			var count=Math.floor(1000/30);
+			var n=0;
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function (){
+				n++;
+				var a=start+dis*n/count;
+				var x=R+Math.sin(a2d(a))*R;
+				var y=R-Math.cos(a2d(a))*R;
+				obj.style.left=x+'px';
+				obj.style.top=y+'px';
+				if (n == count)
+				{
+					clearInterval(obj.timer);
+					obj.a=a;
+				}
+			}, 30);
+		}
+		function a2d(a)
+		{
+			return a*Math.PI/180;
+		}
+	})();*/
 	//拉钩
 	(function(){
 		var oUl1=document.getElementById('js_con_con1');
@@ -726,27 +825,8 @@ window.onload=function(){
 			oContact_div[this.index].style.display='none';
 		};
 	}
-	//突出
-	var op_Btn=document.getElementById('p_btn');
-	var op_Btn2=document.getElementById('p_btn2');
-	var op_Row=document.getElementById('p_row');
-	var op_Col=document.getElementById('p_col');
-	
-	op_Btn.onclick=function (){
-		move(op_Row, {right:80}, 300, function (){
-			op_Col.style.display='block';
-			move(op_Col, {top:80}, 500);
-		});
-	};
-	op_Btn2.onclick=function (){
-		move(op_Col, {top:-220}, 500, function (){
-			op_Col.style.display='none';
-			move(op_Row, {right:-120}, 300);
-		});
-	};
-	
 	/*图片轮播*/
-	var obanner=document.getElementById('banner');
+	/*var obanner=document.getElementById('banner');
 	var abanner_Btn=document.getElementById('banner_div').getElementsByTagName('ol')[0].children;
 	var obanner_ul=document.getElementById('banner_ul');
 	var abanner_Li=banner_ul.children;
@@ -788,9 +868,9 @@ window.onload=function(){
 				oScroll=0;
 			};
 		}
-	};
+	};*/
 	/*图片时钟*/
-	show();
+	/*show();
 	setInterval(show,1000);
 	function show()
 	{
@@ -812,7 +892,7 @@ window.onload=function(){
 	function tab(n)
 	{
 		return n<10?'0'+n:''+n;
-	}
+	}*/
 	/*css3*/
 	var oHome3_con=document.getElementById('home3_con');
 	var oHome3_con_li=getClass(oHome3_con,'home3_con_children');
@@ -852,150 +932,7 @@ window.onload=function(){
 		ohome3_Div.style.background='-webkit-repeating-linear-gradient(-30deg, '+color1+' 0,'+color1+' 10px,'+color2+' 10px,'+color2+' 20px)';	
 	};
 	/*时钟*/
-	(function(){
-	var oDiv=document.querySelector('.clock');
-	var oH=document.querySelector('.clock .hour');
-	var oM=document.querySelector('.clock .min');	
-	var oS=document.querySelector('.clock .sec');
-	var oClock_close=document.getElementById('home3_clock_close');
-	var iSpeedX=0;
-	var iSpeedY=0;
-	var lastX=0;
-	var lastY=0;
-	var timer=null;
-	oClock_close.onclick=function(ev){
-		var oEvent=ev||event;
-		this.parentNode.style.display='none';
-		oEvent.cancelBubble='true';
-		oH5_bg.style.display='none';
-	};
-	var N=60;
-	for(var i=0; i<N; i++){
-		var oSpan=document.createElement('span');
-		if(i%5==0){
-			oSpan.className='bs';
-			var n=i/5==0?12:i/5;
-			oSpan.innerHTML='<strong>'+n+'</strong>';
-			oSpan.children[0].style.transform='rotate('+-i*6+'deg)';
-		}else{
-			oSpan.className='scale';	
-		}
-		oSpan.style.transform='rotate('+i*6+'deg)';
-		oDiv.appendChild(oSpan);
-	}
-	function clock(){
-		var oDate=new Date();
-		var h=oDate.getHours();
-		var m=oDate.getMinutes();
-		var s=oDate.getSeconds();
-		var ms=oDate.getMilliseconds();
-		
-		oH.style.transform='rotate('+(h*30+m/60*30)+'deg)';
-		oM.style.transform='rotate('+(m*6+s/60*6)+'deg)';
-		oS.style.transform='rotate('+(s*6+ms/1000*6)+'deg)';
-	}
-	clock();
-	setInterval(clock,30);
-	oDiv.onmousedown=function(ev){
-		var oEvent=ev || event;
-		var disX=oEvent.clientX-oDiv.offsetLeft;
-		var disY=oEvent.clientY-oDiv.offsetTop;
-		clearInterval(timer);
-		document.onmousemove=function(ev){
-			var oEvent=ev || event;
-			oDiv.style.left=oEvent.clientX-disX+'px';
-			oDiv.style.top=oEvent.clientY-disY+'px';
-			iSpeedX=oEvent.clientX-lastX;
-			iSpeedY=oEvent.clientY-lastY;
-			lastX=oEvent.clientX;
-			lastY=oEvent.clientY;
-		}
-		document.onmouseup=function(){
-			document.onmousemove=null;
-			document.onmouseup=null;	
-			oDiv.releaseCapture && oDiv.releaseCapture();
-			duangMove();
-		}
-		oDiv.setCapture && oDiv.setCapture();
-		return false;	
-	}
-	function duangMove(){
-		timer=setInterval(function(){
-			iSpeedY+=3;
-			
-			var l=oDiv.offsetLeft+iSpeedX;
-			var t=oDiv.offsetTop+iSpeedY;
-			
-			if(t>=document.documentElement.clientHeight-oDiv.offsetHeight){
-				t=document.documentElement.clientHeight-oDiv.offsetHeight;
-				iSpeedY*=-0.8;
-				iSpeedX*=0.8;	
-			}
-			if(t<=0){
-				t=0;
-				iSpeedY*=-0.8;
-				iSpeedX*=0.8;	
-			}
-			if(l>=document.documentElement.clientWidth-oDiv.offsetWidth){
-				l=document.documentElement.clientWidth-oDiv.offsetWidth;
-				iSpeedX*=-0.8;
-				iSpeedY*=0.8;	
-			}
-			if(l<=0){
-				l=0;
-				iSpeedX*=-0.8;
-				iSpeedY*=0.8;	
-			}
-			
-			oDiv.style.left=l+'px';
-			oDiv.style.top=t+'px';
-			
-			if(Math.abs(iSpeedX)<1)iSpeedX=0;
-			if(Math.abs(iSpeedY)<1)iSpeedY=0;
-			
-			if(iSpeedX==0 && iSpeedY==0 && t==document.documentElement.clientHeight-oDiv.offsetHeight){
-				clearInterval(timer);	
-			}
-		},30);	
-	}
-	})();
-	/*图片3D展示*/
-	(function(){
-		var oLeft=document.querySelector('.left');	
-		var oRight=document.querySelector('.right');
-		var aLi=document.querySelectorAll('#ul1 li');
-		var oPhoto_close=document.getElementById('home3_photo_close');
-		oPhoto_close.onclick=function(ev){
-			var oEvent=ev||event;
-			this.parentNode.style.display='none';
-			oEvent.cancelBubble='true';
-			oH5_bg.style.display='none';
-		};
-		//存class
-		var aClass=[];
-		for(var i=0; i<aLi.length; i++){
-			aClass[i]=aLi[i].className;
-		}
-		
-		function tab(){
-			for(var i=0; i<aLi.length; i++){
-				aLi[i].className=aClass[i];
-			}	
-		}
-		
-		//左边
-		oLeft.onclick=function(){
-			aClass.unshift(aClass.pop());	
-			
-			tab();
-		};
-		
-		//右面
-		oRight.onclick=function(){
-			aClass.push(aClass.shift());	
-			
-			tab();
-		};
-	})();
+	
+	
 };
 	

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		*{margin:0px;padding:0px;list-style:none;}
+		body{background:url(../../image/page.png);widtH:100%;height:100%;overflow:hidden;}
+		/*时钟*/
+		.home3_clock{width:1133px;height:642px;z-index:2;position:absolute;left:0px;top:5px;}
+		.home3_clock #home3_clock_close{width:60px;height:40px;}
+		.clock{ width:300px; height:300px; border:1px solid #000; box-shadow:1px 1px 5px #000; position:absolute; left:100px; top:100px; border-radius:50%; background:#eee;}
+		.cap{ width:30px; height:30px; background:-webkit-radial-gradient(#eee,#000); position:absolute; left:50%; top:50%; margin-left:-15px; margin-top:-15px; border-radius:50%;}
+		.clock div{ transform-origin:center bottom;}
+		.hour{ width:14px; height:80px; background:#000; position:absolute; left:50%; top:50%; margin-left:-7px; margin-top:-80px; border-radius:50% 50% 0 0;}
+		.min{ width:10px; height:100px; background:#000; position:absolute; left:50%; top:50%; margin-left:-5px; margin-top:-100px;border-radius:50% 50% 0 0;}
+		.sec{ width:4px; height:120px; background:#f00; position:absolute; left:50%; top:50%; margin-left:-2px; margin-top:-120px;}
+		.scale{ width:2px; height:8px; background:#000; position:absolute; left:50%; margin-left:-1px; transform-origin:center 150px;}
+		.bs{ width:4px; height:12px; background:#000; position:absolute; left:50%; margin-left:-2px; transform-origin:center 150px;}
+		.home3_clock span, strong{ margin-top:20px; position:absolute; left:50%; top:0; width:100px; text-align:center; margin-left:-50px; font-size:30px;}
+		</style>
+		<script>
+		window.onload=function(){
+			(function(){
+	var oDiv=document.querySelector('.clock');
+	var oH=document.querySelector('.clock .hour');
+	var oM=document.querySelector('.clock .min');	
+	var oS=document.querySelector('.clock .sec');
+	var iSpeedX=0;
+	var iSpeedY=0;
+	var lastX=0;
+	var lastY=0;
+	var timer=null;
+	
+	var N=60;
+	for(var i=0; i<N; i++){
+		var oSpan=document.createElement('span');
+		if(i%5==0){
+			oSpan.className='bs';
+			var n=i/5==0?12:i/5;
+			oSpan.innerHTML='<strong>'+n+'</strong>';
+			oSpan.children[0].style.transform='rotate('+-i*6+'deg)';
+		}else{
+			oSpan.className='scale';	
+		}
+		oSpan.style.transform='rotate('+i*6+'deg)';
+		oDiv.appendChild(oSpan);
+	}
+	function clock(){
+		var oDate=new Date();
+		var h=oDate.getHours();
+		var m=oDate.getMinutes();
+		var s=oDate.getSeconds();
+		var ms=oDate.getMilliseconds();
+		
+		oH.style.transform='rotate('+(h*30+m/60*30)+'deg)';
+		oM.style.transform='rotate('+(m*6+s/60*6)+'deg)';
+		oS.style.transform='rotate('+(s*6+ms/1000*6)+'deg)';
+	}
+	clock();
+	setInterval(clock,30);
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev || event;
+		var disX=oEvent.clientX-oDiv.offsetLeft;
+		var disY=oEvent.clientY-oDiv.offsetTop;
+		clearInterval(timer);
+		document.onmousemove=function(ev){
+			var oEvent=ev || event;
+			oDiv.style.left=oEvent.clientX-disX+'px';
+			oDiv.style.top=oEvent.clientY-disY+'px';
+			iSpeedX=oEvent.clientX-lastX;
+			iSpeedY=oEvent.clientY-lastY;
+			lastX=oEvent.clientX;
+			lastY=oEvent.clientY;
+		}
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;	
+			oDiv.releaseCapture && oDiv.releaseCapture();
+			duangMove();
+		}
+		oDiv.setCapture && oDiv.setCapture();
+		return false;	
+	}
+	function duangMove(){
+		timer=setInterval(function(){
+			iSpeedY+=3;
+			
+			var l=oDiv.offsetLeft+iSpeedX;
+			var t=oDiv.offsetTop+iSpeedY;
+			
+			if(t>=document.documentElement.clientHeight-oDiv.offsetHeight){
+				t=document.documentElement.clientHeight-oDiv.offsetHeight;
+				iSpeedY*=-0.8;
+				iSpeedX*=0.8;	
+			}
+			if(t<=0){
+				t=0;
+				iSpeedY*=-0.8;
+				iSpeedX*=0.8;	
+			}
+			if(l>=document.documentElement.clientWidth-oDiv.offsetWidth){
+				l=document.documentElement.clientWidth-oDiv.offsetWidth;
+				iSpeedX*=-0.8;
+				iSpeedY*=0.8;	
+			}
+			if(l<=0){
+				l=0;
+				iSpeedX*=-0.8;
+				iSpeedY*=0.8;	
+			}
+			
+			oDiv.style.left=l+'px';
+			oDiv.style.top=t+'px';
+			
+			if(Math.abs(iSpeedX)<1)iSpeedX=0;
+			if(Math.abs(iSpeedY)<1)iSpeedY=0;
+			
+			if(iSpeedX==0 && iSpeedY==0 && t==document.documentElement.clientHeight-oDiv.offsetHeight){
+				clearInterval(timer);	
+			}
+		},30);	
+	}
+	})();
+		};
+		</script>
+	</head>
+	<body>
+	<div class="home3_clock home3_active">
+		<div class="clock">
+	        <div class="hour"></div>
+	        <div class="min"></div>
+	        <div class="sec"></div>
+	        <div class="cap"></div>
+	    </div>
+	</div>
+	</body>
+</html>

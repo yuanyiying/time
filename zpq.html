@@ -5,14 +5,15 @@
 <title>照片墙</title>
 <style>
 *{margin:0px;padding:0px;list-style:none;}
-#wall{height:500px;z-index:2;margin-left:20px;margin-top:80px;}
+body{background:#000;}
+#wall{height:500px;z-index:2;margin-left:20px;}
 #wall p{padding:10px 10px;width:60px;height:20px;text-align:center;background-color:#ccc;font-size:15px;cursor:pointer;}
-#wall #wall_btn{top:0px;}
+#wall #wall_btn{top:0px;width:80px;height:40px;line-height:40px;text-align:center;font-size:20px;color:#eee;}
 #wall #wall_close{top:80px;}
-#wall .wall_con{width:586px;height:568px;padding:10px;border:1px solid #ccc;margin-left:100px;margin-top:-100px;}
+#wall .wall_con{width:900px;height:900px;padding:10px;margin-left:200px;margin-top:-80px;}
 #wall .wall_con ul{display:block;clear:both;}
-#wall .wall_con ul li{padding:10px;float:left;border:1px solid #FF0;border-radius:10px;box-shadow:2px 4px 4px rgba(0,0,255,0.5);float:left;margin:10px;width:150px;height:150px;}
-#wall .wall_con ul li img{width:150px;height:150px;}
+#wall .wall_con ul li{padding:10px;float:left;border:1px solid #FF0;border-radius:10px;box-shadow:2px 4px 4px rgba(0,0,255,0.5);float:left;margin:20px;width:200px;height:200px;}
+#wall .wall_con ul li img{width:200px;height:200px;}
 #wall .wall_con ul .active{background-color:red;}
 </style>
 <script src="js/move.js"></script>

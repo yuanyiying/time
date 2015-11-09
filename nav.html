@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+
+#ul1 {width:954px; margin:10px auto;}
+#ul1 li {width:104px; height:36px; border:1px solid #999; float:left; position:relative;}
+#ul1 li span {position:absolute; left:0; top:0; width:100%; height:100%; text-align:center; line-height:36px; z-index:2;}
+#ul1 li em {position:absolute; left:0; bottom:0; width:100%; height:0; z-index:1; opacity:0.4; filter:alpha(opacity:40);}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function (){
+	var aLi=document.getElementsByTagName('li');
+	
+	for (var i=0; i<aLi.length; i++)
+	{
+		(function (){
+			var oEm=aLi[i].getElementsByTagName('em')[0];	
+			aLi[i].onmouseover=function (){
+				move(oEm, {height:36}, {
+					duration:300
+				});
+			};
+			
+			aLi[i].onmouseout=function (){
+				move(oEm, {height:0}, {
+					duration:300
+				});
+			};
+		})();
+	}
+};
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>
+    	<span>我的主页</span>
+        <em style="background:#F00"></em>
+    </li>
+	<li>
+    	<span>新闻头条</span>
+        <em style="background:#0F0"></em>
+    </li>
+	<li>
+    	<span>电视剧</span>
+        <em style="background:#00F"></em>
+    </li>
+	<li>
+    	<span>最新电影</span>
+        <em style="background:#F0F"></em>
+    </li>
+	<li>
+    	<span>小游戏</span>
+        <em style="background:#FF0"></em>
+    </li>
+	<li>
+    	<span>小说大全</span>
+        <em style="background:#0FF"></em>
+    </li>
+	<li>
+    	<span>旅游度假</span>
+        <em style="background:#C0F"></em>
+    </li>
+	<li>
+    	<span>品牌特卖</span>
+        <em style="background:#F0C"></em>
+    </li>
+	<li>
+    	<span>今日团购</span>
+        <em style="background:#0CC"></em>
+    </li>
+</ul>
+</body>
+</html>

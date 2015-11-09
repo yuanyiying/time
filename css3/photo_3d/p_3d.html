@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		*{margin:0px;padding:0px;list-style:none;}
+		body{background-image:url(../../image/page.png) ;width:100%;height:100%;overflow:hidden;}
+		#btn{width:300px;height:44px; margin:10px auto;cursor:pointer;}
+		.home3_photo {width:1364px;height:642px;z-index:2;position:relative;left:0px;top:37px;}
+		.home3_photo input{padding:10px 20px;background:#008080;margin-right:10px;border:1px solid #0086B3;font-size:20px;color:#fff;cursor:pointer;}
+		.home3_photo input:active{ background:#999; color:#fff;}
+		.home3_photo #ul1{ width:300px; height:300px; position:absolute;top:100px;left:50%;margin-left:-200px;}
+		.home3_photo #ul1 li{ width:100%; height:100%; position:absolute; left:0; top:0; background:#399; color:#fff; font-size:50px; text-align:center; line-height:300px; font-weight:bold; font-family:微软雅黑; border:1px solid #ccc; opacity:0; 
+			-webkit-box-reflect:below 10px -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+			-moz-box-reflect:below 10px -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+			-ms-box-reflect:below 10px -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+			-o-box-reflect:below 10px -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+			box-reflect:below 10px linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+			 transition:.5s all cubic-bezier(0.79, 2.59, 0.74, 0.25); 
+			 transform:perspective(800px) translateX(0px) rotateY(0deg);}
+		.home3_photo #ul1 li.l2{ opacity:0; transform:perspective(800px) translateX(-280px) rotateY(60deg); z-index:1;}
+		.home3_photo #ul1 li.l1{ opacity:0.8; transform:perspective(800px) translateX(-220px) rotateY(60deg); z-index:2;}
+		.home3_photo #ul1 li.cur{ opacity:1; z-index:5;}
+		.home3_photo #ul1 li.r1{ opacity:0.8;transform:perspective(800px) translateX(220px) rotateY(-60deg); z-index:2;}
+		.home3_photo #ul1 li.r2{ opacity:0;transform:perspective(800px) translateX(280px) rotateY(-60deg); z-index:1;}
+		</style>
+		<script>
+		window.onload=function(){
+			/*图片3D展示*/
+	(function(){
+		var oLeft=document.querySelector('.left');	
+		var oRight=document.querySelector('.right');
+		var aLi=document.querySelectorAll('#ul1 li');
+		
+		//存class
+		var aClass=[];
+		for(var i=0; i<aLi.length; i++){
+			aClass[i]=aLi[i].className;
+		}
+		
+		function tab(){
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].className=aClass[i];
+			}	
+		}
+		
+		//左边
+		oLeft.onclick=function(){
+			aClass.unshift(aClass.pop());	
+			
+			tab();
+		};
+		
+		//右面
+		oRight.onclick=function(){
+			aClass.push(aClass.shift());	
+			
+			tab();
+		};
+	})();
+		};
+		</script>
+	</head>
+	<body>
+		<div class="home3_photo home3_active">
+				<div id="btn">
+		            <input type="button" value="←" class="left">
+		            <input type="button" value="→" class="right">
+                </div>
+                <ul id="ul1">
+                    <li class="l2"><img src="img/1.png"></li>
+                    <li class="l1"><img src="img/2.png"></li>
+                    <li class="cur"><img src="img/3.png"></li>
+                    <li class="r1"><img src="img/4.png"></li>
+                    <li class="r2"><img src="img/5.png"></li>
+                    <li><img src="img/6.png"></li>
+                    <li><img src="img/7.png"></li>
+                    <li><img src="img/8.png"></li>
+                    <li><img src="img/9.png"></li>
+                </ul>
+        </div>
+	</body>
+</html>
