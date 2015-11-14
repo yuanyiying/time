@@ -22,12 +22,12 @@
 .js_con .js_con_btn .active1{background-color:#2306C6;}
 #js_tab_con .active2{display:block;}
 .js_con .js_tab_con ul{display:none;}
-.js_con .js_con_con .js_tab_li1,.js_tab_li2{width:200px;height:240px;cursor:pointer;float:left;margin:15px 5px 20px 5px;position:relative;overflow:hidden;}
-.js_con .js_con_con .js_tab_li1{width:348px;height:240px;overflow:hidden; position:relative;float:left;}
+.js_con .js_con_con .js_tab_li1,.js_tab_li2{width:400px;height:240px;cursor:pointer;float:left;margin:15px 50px 20px 60px;position:relative;overflow:hidden;}
+.js_con .js_con_con .js_tab_li1{width:400px;height:240px;overflow:hidden; position:relative;float:left;}
 .js_con .js_con_con li .lg{position:absolute; top:240px; left:0; width:100%; height:100%; background:#0099cc;text-align:center;color:#fff;line-height:240px;font-size:30px;}
-.js_con .js_con_con li{ overflow:hidden; position:relative; width:348px; height:240px; float:left; background:#ccc; margin:10px;box-shadow:inset 0 0 50px 50px red;border-radius:10px;}
+.js_con .js_con_con li{ overflow:hidden; position:relative; width:400px; height:240px; float:left; background:#ccc; margin:10px;box-shadow:inset 0 0 50px 50px red;border-radius:10px;}
 .js_con .js_con_con li input{cursor:pointer;}
-.js_con .js_con_con li img{width:348px;height:240px;position:absolute;left:0px;top:0px;}
+.js_con .js_con_con li img{width:400px;height:240px;position:absolute;left:0px;top:0px;}
 .js_con .js_con_con li input{}
 .js_con .js_con_con li p{width:200px;height:0px;font-size:20px;color:#fff;text-align:center;background-color:#066;position:absolute;bottom:0px;}
 /*作品*/

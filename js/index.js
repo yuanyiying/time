@@ -491,7 +491,7 @@ window.onload=function(){
 			switch (n)
 			{
 				case 0:
-					olgSpan.style.left='348px';
+					olgSpan.style.left='400px';
 					olgSpan.style.top=0;
 					break;
 					
@@ -501,7 +501,7 @@ window.onload=function(){
 					break;
 				
 				case 2:
-					olgSpan.style.left='-348px';
+					olgSpan.style.left='-400px';
 					olgSpan.style.top='0';
 					break;
 					
@@ -524,7 +524,7 @@ window.onload=function(){
 			switch (n)
 			{
 				case 0:
-					var left=348;
+					var left=400;
 					var top=0;
 					break;
 					
@@ -534,7 +534,7 @@ window.onload=function(){
 					break;
 				
 				case 2:
-					var left=-348;
+					var left=-400;
 					var top=0;
 					break;
 					
@@ -559,7 +559,7 @@ window.onload=function(){
 		return d*180/Math.PI;
 	}
 	})();
-	//日历
+	/*//日历
 	var oC=document.getElementById('cale');
 	var oCale_close=document.getElementById('cale_close');
 	var oCDiv=document.getElementById('calendar');
@@ -711,7 +711,7 @@ window.onload=function(){
 	function toDub(n)
 	{
 		return n<10 ? '0'+n : ''+n;
-	}	
+	}	*/
 	//js点击每一个li 弹出框 div
 	var ojs_effect=document.getElementById('js_con_con1');
 	var ojs_li=ojs_effect.getElementsByClassName('lg');
@@ -910,7 +910,7 @@ window.onload=function(){
 			oH5_bg.style.display='block';
 		};
 	}
-	/*进度条*/
+/*	进度条
 	var oC=document.querySelector('#c1');		
 	var oC2=document.querySelector('#c2');
 	var ohome3_Div=document.querySelector('#home3_bar1');
@@ -930,7 +930,7 @@ window.onload=function(){
 	oC2.onchange=function(){
 		color2=this.value;
 		ohome3_Div.style.background='-webkit-repeating-linear-gradient(-30deg, '+color1+' 0,'+color1+' 10px,'+color2+' 10px,'+color2+' 20px)';	
-	};
+	};*/
 	/*时钟*/
 	
 	

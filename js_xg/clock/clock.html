@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		*{margin:0px;padding:0px;list-style:none;}
+		body{background-image:url(../../css3/photo_bz/img/2.jpg);width:100%;height:800px;overflow:hidden;background-size:cover;}
+		/*选择*/
+		#cale{width:100%;height:840px;position:relative;}
+		#cale .calendar { position:absolute;left:200px;top:152px;display:none;  width:324px; border:1px solid red; background:#fff; }
+		#cale .calendar span { display:block; height:40px; line-height:40px; text-align:center; font-size:16px; }
+		#cale .calendar ul, .calendar ol { overflow:hidden;display:block; }
+		#cale .calendar li { list-style:none; float:left; width:40px; height:40px; line-height:40px; font-size:15px; text-align:center;background:none; margin:0px;box-shadow:none;}
+		#cale .week { color:#f40; }
+		#cale .calendar .today { color:blue; font-size:14px; }
+		#cale .past { color:#999; }
+		#cale .calendar a { position:absolute; width:40px; height:40px; line-height:40px; text-align:center; text-decoration:none; }
+		#cale .calendar .prev { left:0; }
+		#cale .calendar .next { right:0; }
+		#cale input { position:absolute; top:100px; left:200px; height:50px; font-size:30px; }
+		#cale #cale_close{width:100px;height:50px;left:0px;top:0px;font-size:20px;font-weight:100;}
+		#tab{margin:10px auto;position:relative;left:0px;top:0px;z-index:2;}
+		#tab li{width:200px;padding:5px 10px;background:#008080;float:left;margin-right:20px;font-size:20px;color:#fff;text-align:center;cursor:pointer;}
+		#con{width:100%;height:800px;overflow:hidden;}
+		.con_main{width:100%;height:1600px;position:absolute;left:0px;top:60px;}
+		.con_main .con_children{width:100%;height:740px;margin-top:60px;}
+		</style>
+		<script src="../move.js"></script>
+		<script>
+		window.onload=function(){
+			/*选择*/
+			var oTab=document.getElementById('tab');
+			var oTab_li=oTab.getElementsByTagName('li');
+			var oCon_main=document.getElementById('con_main');
+			for(var i=0;i<oTab_li.length;i++){
+				(function(index){
+					oTab_li[i].onclick=function(){
+						if(index==0){
+							move(oCon_main,{top:60});
+						}else if(index==1){
+							move(oCon_main,{top:-800});
+						}
+				};
+				})(i);
+			}
+			/*倒计时*/
+			(function(){
+				show();
+				setInterval(show,1000);
+				function show()
+				{
+					var odate=new Date();
+					var y=odate.getFullYear();
+					var month=odate.getMonth();
+					var d=odate.getDate();
+					var h=odate.getHours();
+					var m=odate.getMinutes();
+					var s=odate.getSeconds();
+					var str=y+tab(month+1)+tab(d)+tab(h)+tab(m)+tab(s);
+					var oimg=document.getElementsByTagName('img');
+					for(var i=0;i<oimg.length;i++)
+					{
+						oimg[i].src='images/'+str.charAt(i)+'.png';
+					}
+				}
+				function tab(n)
+				{
+					return n<10?'0'+n:''+n;
+				}
+			})();
+			/*日历*/
+			(function(){
+				var oC=document.getElementById('cale');
+				var oCDiv=document.getElementById('calendar');
+				var oCSpan=oCDiv.getElementsByTagName('span')[0];
+				var oCUl=oCDiv.getElementsByTagName('ul')[0];
+				
+				
+				var oCT=document.getElementById('cale_t1');
+				oCT.onfocus=function (){
+					oCDiv.style.display='block';
+				};
+				oCT.onclick=function (ev){
+					var oEvent=ev || event;
+					oEvent.cancelBubble=true;
+				};
+				oCDiv.style.left=oCT.offsetLeft+'px';
+				oCDiv.style.top=oCT.offsetTop+oCT.offsetHeight+'px';
+				// 本月
+				var now=0;
+				create();
+				// 下个月
+				var oNext=oCDiv.getElementsByClassName('next')[0];
+				oNext.onclick=function (ev){
+					var oEvent=ev || event;
+					now++;
+					create();
+					oEvent.cancelBubble=true;
+				};
+				// 上个月
+				var oPrev=oCDiv.getElementsByClassName('prev')[0];
+				oPrev.onclick=function (ev){
+					var oEvent=ev || event;
+					now--;
+					create();
+					oEvent.cancelBubble=true;
+				};
+				
+				function create()
+				{
+					oCUl.innerHTML='';
+					
+					var oDate=new Date(); // ?
+					oDate.setMonth(oDate.getMonth()+now);
+					
+					var y=oDate.getFullYear();
+					var m=oDate.getMonth();
+					oCSpan.innerHTML=y+'年'+toDub(m+1)+'月';
+					
+					// 空格
+					var oDate=new Date(); // ?
+					oDate.setMonth(oDate.getMonth()+now);
+					oDate.setDate(1);
+					var week=oDate.getDay();
+					(week==0) && (week=7);
+					for (var i=0; i<week-1; i++)
+					{
+						var oCLi=document.createElement('li');
+						
+						oCUl.appendChild(oCLi);
+					}
+					
+					// 真实日期
+					var oDate=new Date(); // ?
+					oDate.setMonth(oDate.getMonth()+now);
+					oDate.setMonth(oDate.getMonth()+1, 1);
+					oDate.setDate(0);
+					var total=oDate.getDate();
+					for (var i=0; i<total; i++)
+					{
+						var oCLi=document.createElement('li');
+						oCLi.innerHTML=toDub(i+1);
+						
+						oCUl.appendChild(oCLi);
+					}
+					
+					// 周末
+					var aCLi=oCUl.children;
+					for (var i=0; i<aCLi.length; i++)
+					{
+						if (i%7==5 || i%7==6)
+						{
+							aCLi[i].className='week';
+						}
+					}
+					
+					// 今天
+					if (now == 0)
+					{
+						var oDate=new Date();
+						var today=oDate.getDate();
+						for (var i=0; i<aCLi.length; i++)
+						{
+							if (aCLi[i].innerHTML == today)
+							{
+								aCLi[i].className='today';
+								aCLi[i].innerHTML='今天';
+							}
+							else if (aCLi[i].innerHTML < today)
+							{
+								aCLi[i].className='past';
+							}
+						}
+					}
+					else if (now < 0)
+					{
+						for (var i=0; i<aCLi.length; i++)
+						{
+							aCLi[i].className='past';
+						}
+					}
+					
+					// 加事件
+					if (now > 0)
+					{
+						for (var i=0; i<aCLi.length; i++)
+						{
+							aCLi[i].onclick=function (){
+								oCT.value=oCSpan.innerHTML+this.innerHTML+'日';
+							};
+						}
+					}
+					else if (now == 0)
+					{
+						var today=new Date().getDate();
+						for (var i=0; i<aCLi.length; i++)
+						{	
+							if (aCLi[i].innerHTML == '今天')
+							{
+								aCLi[i].onclick=function (){
+									oCT.value=oCSpan.innerHTML+toDub(today)+'日';
+								};
+							}
+							else if (aCLi[i].innerHTML > today)
+							{
+								aCLi[i].onclick=function (){
+									oCT.value=oCSpan.innerHTML+this.innerHTML+'日';
+								};
+							}
+						}
+					}	
+				}
+				// 消失
+				document.onclick=function (){
+					oCDiv.style.display='none';
+				};
+				function toDub(n)
+				{
+					return n<10 ? '0'+n : ''+n;
+				}	
+			})();
+		};
+		</script>
+	</head>
+	<body>
+	<ul id="tab">
+		<li>年月日倒计时</li>
+		<li>年月日日历</li>
+	</ul>
+	<div id="con">
+		<div class="con_main" id="con_main">
+		<!--倒计时-->
+		<div class="con_children">
+			<div style="width:100%;height:467px;color:#fff;font-size:30px;padding-top:20%;text-align:center;">
+				<img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    年
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    月
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    日
+			    <br/>
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    :
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			    :
+			    <img src="images/0.png"/>
+			    <img src="images/0.png"/>
+			</div>
+		</div>
+		<!--日历-->
+		<div class="con_children">
+			 <div id="cale" class="children" style="left:330px;top:20px;">
+                <input type="text" id="cale_t1" />
+                <div class="calendar" id="calendar">
+                    <a href="javascript:;" class="prev">←</a>
+                    <a href="javascript:;" class="next">→</a>
+                    <span>xxx年xxx月</span>
+                    <ol>
+                        <li>一</li>
+                        <li>二</li>
+                        <li>三</li>
+                        <li>四</li>
+                        <li>五</li>
+                        <li class="week">六</li>
+                        <li class="week">日</li>
+                    </ol>
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+		</div>
+		</div>
+	</div>
+	</body>
+</html>

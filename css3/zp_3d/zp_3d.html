@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>3D版图片旋转</title>
+<style>
+*{margin:0px;padding:0px;list-style:none;}
+body{width:100%;background:#000;overflow:hidden;}
+#ul1{width:133px;height:200px;margin:150px auto;perspective:1200px; transition:1s all ease;transform:rotateX(-20deg);transform-style:preserve-3d;position:relative;}
+#ul1 li{width:100%;height:100%;position:absolute;left:0px;top:0px;transition:1s all ease;
+-webkit-box-reflect:below 10px -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.5));
+}
+</style>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	var sum=11;
+	for(var i=0;i<sum;i++)
+	{
+		var oLi=document.createElement('li');
+		oLi.style.backgroundImage='url(img/img/'+(i+1)+'.png)';
+		oUl.appendChild(oLi);
+		
+		(function(oLi,index){
+			setTimeout(function(){
+				oLi.style.transform='rotateY('+360/sum*index+'deg) translateZ(240px)';
+			},200*(sum-index));
+			
+		})(oLi,i);
+	}
+	var oLi=document.getElementsByTagName('li');
+	var y=0;
+	document.onkeydown=function(ev){
+
+		if(ev.keyCode==37)
+		{
+			y-=-360/sum;
+			
+			change();
+		}
+		if(ev.keyCode==39)
+		{
+			y-=360/sum;
+			change();
+		}
+	};
+	function change()
+	{
+		for(var i=0;i<oLi.length;i++)
+		{
+			oLi[i].style.transform='rotateY('+(360/sum*i+y)+'deg) translateZ(350px)';
+			var d=Math.abs((360/sum*i+y)%360);
+			if(d>180) d=360-d;
+			d=180-d;
+			var scale=d/180;
+			scale<0.3&&(scale=0.3);
+			oLi[i].style.opacity=scale;
+			
+		}
+		
+	}
+	document.onmousedown=function(ev){
+	 	var x1=ev.clientX;
+		var y1=ev.clientY;
+		var disX=ev.clientX-oUl.offsetWidth/2;
+		var disY=ev.clientY-oUl.offsetHeight/2;
+		document.onmousemove=function(ev){
+			var l=ev.clientX-disX;
+			var t=ev.clientY-disY;
+			oUl.style.left=l+'px';
+			oUl.style.top=t+'px';
+			var x2=ev.clientX;
+			var y2=ev.clientY;
+			var disXX=x2-x1;
+			var disYY=y2-y1;
+			if(disXX>0){
+				if(disYY>0){
+					oUl.style.transform='perspective(800px) rotateX(-45deg) rotateY(45deg)';
+				}
+				else{
+					oUl.style.transform='perspective(800px) rotateX(45deg) rotateY(45deg)';
+				}
+			}
+			else{
+				if(disYY>0){
+					oUl.style.transform='perspective(800px) rotateX(45deg) rotateY(-45deg)';
+				}
+				else{
+					oUl.style.transform='perspective(800px) rotateX(-45deg) rotateY(-45deg)';
+				}
+			}
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};
+		return false;
+	};
+	/*document.onmousedown=function(ev){
+		var x1=ev.clientX;
+		var y1=ev.clientY;
+		document.onmousemove=function(ev){
+			var x2=ev.clientX;
+			var y2=ev.clientY;
+			var disXX=x2-x1;
+			var disYY=y2-y1;
+			if(disXX>0){
+				if(disYY>0){
+					oUl.style.transform='perspective(800px) rotateX(-45deg) rotateY(45deg)';
+				}
+				else{
+					oUl.style.transform='perspective(800px) rotateX(45deg) rotateY(45deg)';
+				}
+			}
+			else{
+				if(disYY>0){
+					oUl.style.transform='perspective(800px) rotateX(45deg) rotateY(-45deg)';
+				}
+				else{
+					oUl.style.transform='perspective(800px) rotateX(-45deg) rotateY(-45deg)';
+				}
+			}
+		};*/
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+<ul id="ul1"></ul>
+</body>
+</html>

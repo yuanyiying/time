@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>屏保</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+html,body{ overflow:hidden;}
+body{ background:#000;}
+#c1{ background:#000;}
+
+</style>
+<script>
+function rnd(n,m){
+	return parseInt(Math.random()*(m-n)+n);
+}
+window.onload=function(){
+	var oC=document.getElementById('c1');	
+	var gd=oC.getContext('2d');
+	
+	var winW=document.documentElement.clientWidth;
+	var winH=document.documentElement.clientHeight;
+	
+	oC.width=winW;
+	oC.height=winH;
+	
+	var N=6;
+	
+	var aPoint=[]; //存放点
+	
+	var len=10;
+	var oldArr=[]; //[],[]
+	
+	for(var i=0; i<N; i++){
+		aPoint[i]={
+			x:rnd(0,winW),
+			y:rnd(0,winH),
+			speedX:rnd(-10,10),
+			speedY:rnd(-10,10)
+		};
+	}
+	
+	//画点
+	setInterval(function(){
+		gd.clearRect(0,0,oC.width,oC.height);
+		
+		for(var i=0; i<aPoint.length; i++){
+			drawPoint(aPoint[i]);
+		}
+		
+		//点移动
+		for(var i=0; i<aPoint.length; i++){
+			if(aPoint[i].y<=0){
+				aPoint[i].y=0;
+				aPoint[i].speedY*=-1;
+			}
+			if(aPoint[i].y>=winH){
+				aPoint[i].y=winH;
+				aPoint[i].speedY*=-1;
+			}
+			if(aPoint[i].x<=0){
+				aPoint[i].x=0;
+				aPoint[i].speedX*=-1;
+			}
+			if(aPoint[i].x>=winW){
+				aPoint[i].x=winW;
+				aPoint[i].speedX*=-1;
+			}
+			aPoint[i].x+=aPoint[i].speedX;
+			aPoint[i].y+=aPoint[i].speedY;
+		}
+		
+		//连线
+		gd.beginPath();
+		gd.strokeStyle='rgba(255,255,255,0.8)';
+		gd.moveTo(aPoint[0].x,aPoint[0].y);
+		for(var i=1; i<aPoint.length; i++){
+			gd.lineTo(aPoint[i].x, aPoint[i].y);
+		}
+		gd.closePath();
+		gd.stroke();
+		
+		//画尾巴
+		var arr=[];
+		for(var i=0; i<aPoint.length; i++){
+			arr[i]={
+				x:aPoint[i].x,
+				y:aPoint[i].y
+			};
+		}
+		
+		oldArr.push(arr);
+		
+		while(oldArr.length>len){
+			oldArr.shift();
+		}
+		
+		gd.beginPath();
+		for(var i=0; i<oldArr.length; i++){
+			var opacity=1-i/oldArr.length;
+			console.log(opacity);
+			
+			gd.moveTo(oldArr[i][0].x, oldArr[i][0].y);
+			
+			gd.strokeStyle='rgba(255,255,255,'+opacity+')';
+			for(var j=0; j<oldArr[i].length; j++){
+				gd.lineTo(oldArr[i][j].x,oldArr[i][j].y);
+			}
+			gd.closePath();
+			gd.stroke();
+		}
+		
+	},16);
+	
+	function drawPoint(p){
+		var pW=1;
+		var pH=1;
+		
+		gd.fillStyle='#fff';
+		gd.fillRect(p.x-pW/2,p.y-pH/2,pW,pH);
+	}
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
