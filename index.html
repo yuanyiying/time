@@ -34,16 +34,15 @@
             </div>
             <div class="main_l2" >
             <p id="main_l2_p">十年前我们期待青春，现在，或许是我们致青春的时候了。</p>
-	        <audio src="image/李白.mp3" controls autoplay loop style="display:none"></audio>
             </div>
-            <div class="main_l3" id="contact">
+          	<div class="main_l3" id="contact">
                 <p>我的联系方式</p>
-                <a href="#"><img src="image/qq.jpg"><div>QQ号：1843750305</div></a>
-                <a href="http://weibo.com/u/2697005914#_loginLayer_1447076935164"><img src="image/weibo.png"><div>微博：Forever修景</div></a>
-                <a href="#"><img src="image/weixin.png"><div>微信：Shire0905</div></a>
+                <a href="javascript:;"><img src="image/qq.jpg"></a>
+                <a href="http://weibo.com/u/2697005914#_loginLayer_1447076935164"><img src="image/weibo.png"></a>
+                <a href="javascript:;"><img src="image/weixin.png"></a>
             </div>
     	</div>
-           <div class="content" id="content" style="padding:0px 10px; display:block;position:relative">
+           <div class="content" id="content" style="padding:10px 20px; display:block;position:relative">
                 <div class="main_r_con1" >
                     <div class="tit"><p class="tit_p">自我介绍</p></div>
                     <div class="con1">
@@ -52,8 +51,8 @@
                                 <tr><td class="table_tit">姓名：</td><td>张艺璇</td></tr>
                                 <tr><td class="table_tit">生日日期:</td><td>1993/7/19</td></tr>
                                 <tr><td class="table_tit">地址：</td><td>北京市昌平区</td></tr>
-                                <tr><td class="table_tit">手机号码：</td><td>18703219529</td></tr>
-                                <tr><td class="table_tit">邮箱：</td><td>potato0905@163.com</td></tr>
+                                <tr><td class="table_tit">手机号码：</td><td>15311387297</td></tr>
+                                <tr><td class="table_tit">邮箱：</td><td>zyx930719@126.com</td></tr>
                             </table>
                         </div>
                         <div class="con2">
@@ -99,6 +98,7 @@
                                         <div>本人性格开朗、为人诚恳、乐观向上、兴趣广泛、拥有较强的组织能力和适应能力、并具有较强的管理策划与组织管理协调能力。</div>
                                     </ul>
                                 </li>
+
                             </ul>
                         </div>
                 </div>
@@ -114,7 +114,10 @@
     <div class="home2 page">
     <div id="js_bg"></div>
     	<div class="main_r_con1">
-          <div class="js_tit_warp"><div class="js_tit">各种效果</div></div>
+          <div class="js_tit_warp">
+          	<div class="js_tit">JavaScript</div>
+          	<div class="js_tit">JQuery</div>
+          </div>
             <div class="js_con">
                 <div class="js_tab_con" id="js_tab_con">
        		        <ul class="js_con_con" id="js_con_con1" style="display:block;">
@@ -147,11 +150,10 @@
     <!--作品-->
     <div class="home4 page" id="work" >
        <ul id="work_ul">
-	        <li><div id="wish" class="web"><a href="works/myWish/index.html">心愿墙</a></div></li>
-	        <li><div id="wish" class="web"><a href="works/webQQ/webQQ.html">网页QQ</a></div></li>
-	        <li><div id="wish" class="web"><a href="works/weibo/weibo_test.html">微博</a></div></li>
-	        <li><div id="pogress" class="web"><a href="works/pogress/tab.html">图片运动</a></div></li>
-	        <li><div id="canvas" class="web"><a href="works/canvas/canvas.html">图片运动</a></div></li>
+	        <li><a href="works/webQQ/webQQ.html"><div id="wish" class="web">网页QQ</div></a></li>
+	        <li><a href="works/pogress/tab.html"><div id="pogress" class="web">图片运动</div></a></li>
+	        <li><a href="works/canvas/canvas.html"><div id="canvas" class="web">图片运动</div></a></li>
+	        <li><a href="works/3d_rect/rect.html"><div id="swiper" class="web">立体的矩形块</div></a></li>
         </ul>
     </div>
 </div>  
@@ -163,14 +165,12 @@ body{width:100%;background-size:cover;background-image:url(image/page.png);}
 #h5_bg{display:none;width:1133px;height:642px;background-image:url(image/lay_bg.jpg);background-size:cover;-webkit-filter:blur(10px);z-index:1;}
 #js_bg{display:none;width:1133px;height:642px;background-image:url(image/lay_bg.jpg);background-size:cover;-webkit-filter:blur(10px);z-index:1;}
 .home3 #home3_btn{height:70px;width:100%;}
-.home3 #home3_btn p{padding:10px 10px;font-size:15px;font-weight:bold;color:#fff;float:left;margin:10px;background-color:#006666;cursor:pointer;}
+.home3 #home3_btn p{padding:10px 10px;font-size:15px;transition:1s all ease;font-weight:bold;color:#fff;float:left;margin:10px;background-color:#006666;cursor:pointer;}
+.home3 #home3_btn p:hover{background:#fff;color:#006666;}
 .home3 #home3_con li{width:400px;height:250px;margin:10px;float:left;border-radius:10px;cursor:pointer;margin:10px 50px 10px 50px;}
-.home3 #home3_con li img:hover{border-radius:60px;box-shadow:5px 5px 15px dodgerblue;transform:perspective(800px) translateZ(50px)}
-.home3 #home3_con li img{width:100%;height:100%;transition:2s all ease;transform:perspective(800px) translateZ(0px)}
+.home3 #home3_con li img:hover{border-radius:20px;transform:scale(0.9);border:1px solid #008080;}
+.home3 #home3_con li img{border:1px solid #fff;width:100%;height:100%;transition:2s all ease;transform:perspective(800px) translateZ(0px)}
 #home3_con .home3_active{width:100%;height:100%;}
-
-
-
 </style>
 </body>
 </html>

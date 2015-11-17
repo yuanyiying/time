@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>html5 3d立体块</title>
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1">
+
+<link rel="stylesheet" href="swiper.min.css">
+<script src="swiper.min.js"></script>
+<style>
+body{width:100%;height:100%;overflow:hidden;background-image:url(../../image/page.png);background-size:cover;}
+.swiper-container{ width:800px; border:1px dashed #000;}
+.swiper-slide{ height:500px; background:#ccc; text-align:center;  font-size:30px; font-weight:bold; color:#fff; text-shadow:1px 1px 4px #000;}
+
+.swiper-pagination span{ background:red;}
+
+</style>
+</head>
+
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" ><img src="img/1.png"></div>
+        <div class="swiper-slide" ><img src="img/2.png"></div>
+        <div class="swiper-slide" ><img src="img/3.png"></div>
+        <div class="swiper-slide" ><img src="img/4.png"></div>
+        <div class="swiper-slide" ><img src="img/5.png"></div>
+    </div>
+    
+    <div class="swiper-pagination"></div>
+     
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<script>
+new Swiper('.swiper-container',{
+	pagination:'.swiper-pagination',
+	paginationClickable:true,
+	spaceBetween: 20,
+	nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+	effect: 'cube'	
+});
+</script>
+</body>
+</html>
