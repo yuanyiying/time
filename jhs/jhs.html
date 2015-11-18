@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		*{margin:0px;padding:0px;list-style:none;text-decoration:none;}
+		html{font-size:20px;}
+		.head1{width:16rem;height:2.525rem;background:#f5f5f5;line-height:2.525rem;position:relative;}
+		.head1 .head1_back{float:left;margin-left:0.6rem;margin-top:0.55rem;width:3.1rem;height:1.475rem;}
+		.head1 .head1_logo{float:left;width:3.7rem;height:0.975rem;position:absolute;left:50%;margin-left:-1.85rem;top:0.8rem;}
+		.head2 img{width:16.05rem;height:6.7rem;}
+		.head2 {width:16rem;}
+		.head2 ul{width:2.5rem;height:0.875rem;margin:0 auto;}
+		.head2 ul li{width:0.25rem;height:0.25rem;background:#a9a9a9;border-radius:50%;margin-right:0.25rem;float:left;}
+		/*分类*/
+		.nav{width:16rem;height:8.075rem;}
+		.nav ul{width:16rem;}
+		.nav ul li{width:2.1rem;height:3.2rem;text-align:center;margin-left:1.5rem;float:left;margin-top:0.975rem;}
+		.nav ul li a{font-size:0.55rem;color:#999;}
+		.nav ul li .nav_li_top{width:2.1rem;height:2.1rem;border-radius:50%;text-align:center;line-height:2.1rem;}
+		.nav ul li .nav_li_top img{width:0.975rem;height:1rem;}
+		.nav ul li .nav_li_bottom{font-size:0.6rem;margin-top:0.475rem;}
+		.nav ul li .nav_li_bottom{color:#999999;}
+		/*排行榜头部*/
+		.sort{width:calc(16rem - 1rem);padding:0px 0.5rem;margin-top:2rem;}
+		.sort_tit{width:calc(16rem - 1rem);height:1.8rem;line-height:1.8rem;font-size:0.625rem;border-bottom:0.1rem solid #dcdcdc;}
+		.sort_tit_left{padding-left:0.45rem;width:calc(5.375rem -0.45rem);}
+		.sort_tit_left p{float:left;padding-left:0.45rem;width:calc(5.375rem -0.45rem);height:0.75rem;padding-left:0.45rem;}
+		.sort_tit_left em{float:left;width:0.1rem;height:0.75rem;background:#d51938;margin-top:0.5rem;}
+		.sort_tit_right{float:right;}
+		.sort_con{width:calc(16rem - 1rem);height:3rem;}
+		/*排行榜内容*/
+		.sort_con{height:calc(35.875rem - 0.9rem);}
+		.sort_con ul li{height:3rem;margin-top:0.5rem;}
+		.sort_con ul li .con_div{float:left;}
+		.sort_con .sort1{width:1.5rem;font-size:0.875rem;color:#fff;text-align:center;line-height:3rem;}
+		.sort_con .sort2{width:4.5rem;height:3rem;}
+		.sort_con .sort2 img{width:4.5rem;height:3rem;}
+		.sort_con .sort3{font-size:0.6rem;}
+		.sort_con .sort3 .sort3_left{width:3.875rem;height:3rem;float:left;}
+		.sort_con .sort3 .sort3_left a{margin-top:0.75rem;display:block;color:#999999;}
+		.sort_con .sort3 .sort3_left span{line-height:none;}
+		.sort_con .sort3 .sort3_left span em{color:#c7223d;font-style:normal;}
+		.sort_con .sort3 .sort3_right{float:right;margin-left:1.825rem;width:2.25rem;color:#d51938;}
+		.sort_con .sort3 .sort3_right p{margin-top:0.75rem;font-weight:bold;}
+		.sort_con .sort3 .sort3_right img{width:0.325rem;height:0.525rem;}
+		.sort_bottom{height:2.05rem;background:#f5f5f5;text-align:center;line-height:2.05rem;margin-bottom:0.5rem;}
+		.sort_bottom a{font-size:0.625rem;color:#666666;}
+		/*商品*/
+		.goods{height:8.8rem;width:calc(16rem - 1rem);padding:0px 0.5rem;}
+		.goods_left{width:3.75rem;height:8.8rem;background:#ff3900;float:left;font-size:0.625rem;color:#fff;text-align:center;}
+		.goods_left p{margin-top:0.7rem;}
+		.goods_right{float:left;width:11.25rem;height:8.8rem;}
+		.goods_right a{text-align:center;line-height:2.175rem;color:#999;float:left;font-size:0.625rem;display:block;width:calc(3.725rem - 0.1rem);height:2.175rem;border:1px solid #eee;}
+		.goods_bottom{width:calc(16rem - 1rem);margin:0.5rem auto;height:2.2rem;background:#f5f5f5;text-align:center;line-height:2.2rem;font-size:0.625rem;}
+		.goods_bottom a{color:#666;}
+		/*联系*/
+		.acoss{width:calc(16rem -1rem);height:4rem;margin:0 auto;padding:0px 0.5rem;}
+		.acoss .a_div{width:5rem;height:4rem;float:left;line-height:2rem;text-align:center;}
+		.acoss .a_div p{width:5rem;}
+		.acoss .a_div img{width:0.975rem;height:0.85rem;}
+		.acoss .a_div a{color:#fff;font-size:0.55rem;}
+		/**/
+		.login{height:2.2rem;background:#f8f8f8;line-height:2.2rem;}
+		.login-left{float:left;}
+		.login a{font-size:0.625rem;color:#333333;float:left;display:block;margin-left:1.225rem;}
+		.login-right{float:right;font-size:0.625rem;margin-right:0.675rem;}
+		.login-right p img{width:0.45rem;height:0.225rem;margin-left:0.975rem;}
+		/*尾部*/
+		.footer{width:16rem;height:8.575rem;background:#eee;text-align:center;}
+		.footer1{width:16rem;height:0.7rem;font-size:0.7rem;margin:0 auto;padding-top:1.05rem;}
+		.footer1 a{color:#333;font-size:0.7rem;margin-top:1.05rem;}
+		.footer2{color:#999999;width:16rem;margin-top:0.8rem;font-size:0.5rem;float:left;margin-right:0.65rem;}
+		.footer3 img{width:13rem;height:4.375rem;margin-top:0.65rem;}
+		</style>
+		<script>
+		window.onload=window.onsize=function(){
+			document.documentElement.style.fontSize=20*document.documentElement.clientWidth/320+'px';
+		};
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<!--顶部-->
+			<div class="head">
+				<div class="head1">
+					<img class="head1_back" src="img/fuihui.png">
+					<img class="head1_logo" src="img/logo.png">
+				</div>
+				<div class="head2">
+					<img src="img/banner.png">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<!--分类-->
+			<div class="nav">
+				<ul>
+					<li>
+						<div class="nav_li_top" style="background:#ff3900"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">商品</a></div>
+					</li>
+					<li >
+						<div class="nav_li_top" style="background:#8bca11"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">生活</a></div>
+					</li>
+					<li >
+						<div class="nav_li_top" style="background:#000"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">品牌</a></div>
+					</li>
+					<li >
+						<div class="nav_li_top" style="background:#ff529d"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">聚宝盆</a></div>
+					</li>
+					<li >
+						<div class="nav_li_top" style="background:#cfa871"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">聚名品</a></div>
+					</li>
+					<li >
+						<div class="nav_li_top" style="background:#ffb021"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">聚家装</a></div>
+					</li>
+					<li>
+						<div class="nav_li_top" style="background:#2dc814"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">聚透</a></div>
+					</li>
+					<li>
+						<div class="nav_li_top" style="background:#f5493c"><img src="img/nav.png"></div>
+						<div class="nav_li_bottom"><a href="#">客户端</a></div>
+					</li>
+				</ul>
+			</div>
+			<!--排行榜-->
+			<div class="sort">
+				<div class="sort_tit">
+					<div class="sort_tit_left"><em></em><p>聚划算热卖排行</p></div>
+					<div class="sort_tit_right">TOP10</div>
+				</div>
+				<div class="sort_con">
+					<ul>
+						<li>
+							<div class="sort1 con_div" style="background:#e00202">1</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff4800">2</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff7300">3</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">4</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">5</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">6</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">7</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">8</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">9</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="sort1 con_div" style="background:#ff9d00">10</div>
+							<div class="sort2 con_div"><img src="img/hot.png"></div>
+							<div class="sort3 con_div">
+								<div class="sort3_left">
+									<a href="#">已售68423<br><span><em>2.3</em>折 ￥299</span></a>
+									
+								</div>
+								<div class="sort3_right">
+									<p>￥51<img src="img/jiantou.png"></p>
+									
+								</div>
+							</div>
+						</li>
+						
+						
+						
+					</ul>
+				</div>
+				<div class="sort_bottom">
+					<a href="#">更多换算，逛起来</a>
+				</div>
+			</div>
+			<!--商品团-->
+			<div class="goods">
+				<div class="goods_left">
+					<p>商品团</p>
+				</div>
+				<div class="goods_right">
+					<a href="#">服饰</a>
+					<a href="#">配饰</a>
+					<a href="#">美妆</a>
+					<a href="#">鞋包</a>
+					<a href="#">食品</a>
+					<a href="#">家居</a>
+					<a href="#">运动</a>
+					<a href="#">电器</a>
+					<a href="#">百货</a>
+					<a href="#">母婴</a>
+					<a href="#">数码</a>
+					<a href="#">更多</a>
+				</div>
+			</div>
+			<div class="goods_bottom">
+					<a href="#">精品商品，逛起来！</a>
+			</div>
+			<!--生活团-->
+			<div class="goods">
+				<div class="goods_left">
+					<p>生活团</p>
+				</div>
+				<div class="goods_right">
+					<a href="#">美食</a>
+					<a href="#">教育</a>
+					<a href="#">酒店</a>
+					<a href="#">电影</a>
+					<a href="#">生活服务</a>
+					<a href="#">卡券</a>
+					<a href="#">摄影</a>
+					<a href="#">粮油生鲜</a>
+					<a href="#">门票</a>
+					<a href="#">娱乐休闲</a>
+					<a href="#"></a>
+					<a href="#"></a>
+				</div>
+			</div>
+			<div class="goods_bottom">
+					<a href="#">品质生活，逛起来！</a>
+			</div>
+			<!--品牌团 -->
+			<div class="goods">
+				<div class="goods_left">
+					<p>品牌团</p>
+				</div>
+				<div class="goods_right">
+					<a href="#">七匹狼</a>
+					<a href="#">粉红</a>
+					<a href="#">卓诗尼</a>
+					<a href="#">收纳博士</a>
+					<a href="#">惠氏</a>
+					<a href="#">夏乐</a>
+					<a href="#">帕克伦</a>
+					<a href="#">古今</a>
+					<a href="#">九牧</a>
+					<a href="#">诺奥</a>
+					<a href="#">红豆</a>
+					<a href="#">曼秀雷敦</a>
+				</div>
+			</div>
+			<div class="goods_bottom">
+					<a href="#">品牌折扣，逛起来！</a>
+			</div>
+			<!--客户端-->
+			<div class="acoss">
+				<div class="a_div" style="background:#38a4f1">
+					<p><img src="img/icon_apple.png"></p>
+					<p><a href="#">ios客户端</a></p>
+				</div>
+				<div class="a_div" style="background:#8bca11">
+					<p><img src="img/icon_an.png"></p>
+					<p><a href="#">安卓客户端</a></p>
+				</div>
+				<div class="a_div" style="background:#ff7404"> 
+					<p><img src="img/icon_wei.png"></p>
+					<p><a href="#">意见反馈</a></p>
+				</div>
+			</div>
+			<!--登陆注册-->
+			<div class="login">
+				<div class="login-left">
+					<a href="#">登陆</a>
+					<a href="#">注册</a>
+				</div>
+				<div class="login-right">
+					<p>TOP<img src="img/icon_top.png"></p>
+				</div>
+			</div>
+			<!--尾部-->
+			<div class="footer">
+				<div class="footer1">
+					<a href="#">标准版</a>
+					<a href="#">电脑版</a>
+				</div>
+				<div class="footer2">
+					<p>@2013 浙B2-20080204 服务中心</p>
+				</div>
+				<div class="footer3">
+					<img src="img/footer.png">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
